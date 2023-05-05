@@ -1,0 +1,14 @@
+C:\Users\Dong.VTH\source\repos\ConfigurationSample\ConfigurationSample\bin\Debug\netcoreapp2.1\ConfigurationSample.deps.json
+C:\Users\Dong.VTH\source\repos\ConfigurationSample\ConfigurationSample\bin\Debug\netcoreapp2.1\ConfigurationSample.runtimeconfig.json
+C:\Users\Dong.VTH\source\repos\ConfigurationSample\ConfigurationSample\bin\Debug\netcoreapp2.1\ConfigurationSample.runtimeconfig.dev.json
+C:\Users\Dong.VTH\source\repos\ConfigurationSample\ConfigurationSample\bin\Debug\netcoreapp2.1\ConfigurationSample.dll
+C:\Users\Dong.VTH\source\repos\ConfigurationSample\ConfigurationSample\bin\Debug\netcoreapp2.1\ConfigurationSample.pdb
+C:\Users\Dong.VTH\source\repos\ConfigurationSample\ConfigurationSample\obj\Debug\netcoreapp2.1\ConfigurationSample.csprojAssemblyReference.cache
+C:\Users\Dong.VTH\source\repos\ConfigurationSample\ConfigurationSample\obj\Debug\netcoreapp2.1\ConfigurationSample.csproj.CoreCompileInputs.cache
+C:\Users\Dong.VTH\source\repos\ConfigurationSample\ConfigurationSample\obj\Debug\netcoreapp2.1\ConfigurationSample.RazorAssemblyInfo.cache
+C:\Users\Dong.VTH\source\repos\ConfigurationSample\ConfigurationSample\obj\Debug\netcoreapp2.1\ConfigurationSample.RazorAssemblyInfo.cs
+C:\Users\Dong.VTH\source\repos\ConfigurationSample\ConfigurationSample\obj\Debug\netcoreapp2.1\ConfigurationSample.AssemblyInfoInputs.cache
+C:\Users\Dong.VTH\source\repos\ConfigurationSample\ConfigurationSample\obj\Debug\netcoreapp2.1\ConfigurationSample.AssemblyInfo.cs
+C:\Users\Dong.VTH\source\repos\ConfigurationSample\ConfigurationSample\obj\Debug\netcoreapp2.1\ConfigurationSample.RazorTargetAssemblyInfo.cache
+C:\Users\Dong.VTH\source\repos\ConfigurationSample\ConfigurationSample\obj\Debug\netcoreapp2.1\ConfigurationSample.dll
+C:\Users\Dong.VTH\source\repos\ConfigurationSample\ConfigurationSample\obj\Debug\netcoreapp2.1\ConfigurationSample.pdb

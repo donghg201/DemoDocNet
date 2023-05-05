@@ -1,0 +1,14 @@
+C:\Users\Dong.VTH\source\repos\ActionSelectorAndActionVerbs\ActionSelectorAndActionVerbs\bin\Debug\netcoreapp2.1\ActionSelectorAndActionVerbs.deps.json
+C:\Users\Dong.VTH\source\repos\ActionSelectorAndActionVerbs\ActionSelectorAndActionVerbs\bin\Debug\netcoreapp2.1\ActionSelectorAndActionVerbs.runtimeconfig.json
+C:\Users\Dong.VTH\source\repos\ActionSelectorAndActionVerbs\ActionSelectorAndActionVerbs\bin\Debug\netcoreapp2.1\ActionSelectorAndActionVerbs.runtimeconfig.dev.json
+C:\Users\Dong.VTH\source\repos\ActionSelectorAndActionVerbs\ActionSelectorAndActionVerbs\bin\Debug\netcoreapp2.1\ActionSelectorAndActionVerbs.dll
+C:\Users\Dong.VTH\source\repos\ActionSelectorAndActionVerbs\ActionSelectorAndActionVerbs\obj\Debug\netcoreapp2.1\ActionSelectorAndActionVerbs.csprojAssemblyReference.cache
+C:\Users\Dong.VTH\source\repos\ActionSelectorAndActionVerbs\ActionSelectorAndActionVerbs\obj\Debug\netcoreapp2.1\ActionSelectorAndActionVerbs.csproj.CoreCompileInputs.cache
+C:\Users\Dong.VTH\source\repos\ActionSelectorAndActionVerbs\ActionSelectorAndActionVerbs\obj\Debug\netcoreapp2.1\ActionSelectorAndActionVerbs.RazorAssemblyInfo.cache
+C:\Users\Dong.VTH\source\repos\ActionSelectorAndActionVerbs\ActionSelectorAndActionVerbs\obj\Debug\netcoreapp2.1\ActionSelectorAndActionVerbs.RazorAssemblyInfo.cs
+C:\Users\Dong.VTH\source\repos\ActionSelectorAndActionVerbs\ActionSelectorAndActionVerbs\obj\Debug\netcoreapp2.1\ActionSelectorAndActionVerbs.AssemblyInfoInputs.cache
+C:\Users\Dong.VTH\source\repos\ActionSelectorAndActionVerbs\ActionSelectorAndActionVerbs\obj\Debug\netcoreapp2.1\ActionSelectorAndActionVerbs.AssemblyInfo.cs
+C:\Users\Dong.VTH\source\repos\ActionSelectorAndActionVerbs\ActionSelectorAndActionVerbs\obj\Debug\netcoreapp2.1\ActionSelectorAndActionVerbs.RazorTargetAssemblyInfo.cache
+C:\Users\Dong.VTH\source\repos\ActionSelectorAndActionVerbs\ActionSelectorAndActionVerbs\bin\Debug\netcoreapp2.1\ActionSelectorAndActionVerbs.pdb
+C:\Users\Dong.VTH\source\repos\ActionSelectorAndActionVerbs\ActionSelectorAndActionVerbs\obj\Debug\netcoreapp2.1\ActionSelectorAndActionVerbs.dll
+C:\Users\Dong.VTH\source\repos\ActionSelectorAndActionVerbs\ActionSelectorAndActionVerbs\obj\Debug\netcoreapp2.1\ActionSelectorAndActionVerbs.pdb

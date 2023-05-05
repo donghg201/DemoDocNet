@@ -1,0 +1,14 @@
+C:\Users\Dong.VTH\source\repos\FirstEmptyWebApp\FirstEmptyWebApp\bin\Debug\netcoreapp2.1\FirstEmptyWebApp.deps.json
+C:\Users\Dong.VTH\source\repos\FirstEmptyWebApp\FirstEmptyWebApp\bin\Debug\netcoreapp2.1\FirstEmptyWebApp.runtimeconfig.json
+C:\Users\Dong.VTH\source\repos\FirstEmptyWebApp\FirstEmptyWebApp\bin\Debug\netcoreapp2.1\FirstEmptyWebApp.runtimeconfig.dev.json
+C:\Users\Dong.VTH\source\repos\FirstEmptyWebApp\FirstEmptyWebApp\bin\Debug\netcoreapp2.1\FirstEmptyWebApp.dll
+C:\Users\Dong.VTH\source\repos\FirstEmptyWebApp\FirstEmptyWebApp\bin\Debug\netcoreapp2.1\FirstEmptyWebApp.pdb
+C:\Users\Dong.VTH\source\repos\FirstEmptyWebApp\FirstEmptyWebApp\obj\Debug\netcoreapp2.1\FirstEmptyWebApp.csprojAssemblyReference.cache
+C:\Users\Dong.VTH\source\repos\FirstEmptyWebApp\FirstEmptyWebApp\obj\Debug\netcoreapp2.1\FirstEmptyWebApp.csproj.CoreCompileInputs.cache
+C:\Users\Dong.VTH\source\repos\FirstEmptyWebApp\FirstEmptyWebApp\obj\Debug\netcoreapp2.1\FirstEmptyWebApp.RazorAssemblyInfo.cache
+C:\Users\Dong.VTH\source\repos\FirstEmptyWebApp\FirstEmptyWebApp\obj\Debug\netcoreapp2.1\FirstEmptyWebApp.RazorAssemblyInfo.cs
+C:\Users\Dong.VTH\source\repos\FirstEmptyWebApp\FirstEmptyWebApp\obj\Debug\netcoreapp2.1\FirstEmptyWebApp.AssemblyInfoInputs.cache
+C:\Users\Dong.VTH\source\repos\FirstEmptyWebApp\FirstEmptyWebApp\obj\Debug\netcoreapp2.1\FirstEmptyWebApp.AssemblyInfo.cs
+C:\Users\Dong.VTH\source\repos\FirstEmptyWebApp\FirstEmptyWebApp\obj\Debug\netcoreapp2.1\FirstEmptyWebApp.RazorTargetAssemblyInfo.cache
+C:\Users\Dong.VTH\source\repos\FirstEmptyWebApp\FirstEmptyWebApp\obj\Debug\netcoreapp2.1\FirstEmptyWebApp.dll
+C:\Users\Dong.VTH\source\repos\FirstEmptyWebApp\FirstEmptyWebApp\obj\Debug\netcoreapp2.1\FirstEmptyWebApp.pdb

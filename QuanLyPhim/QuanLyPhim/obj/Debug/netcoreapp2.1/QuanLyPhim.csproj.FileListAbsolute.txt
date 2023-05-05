@@ -1,0 +1,14 @@
+C:\Users\Dong.VTH\source\repos\QuanLyPhim\QuanLyPhim\bin\Debug\netcoreapp2.1\QuanLyPhim.deps.json
+C:\Users\Dong.VTH\source\repos\QuanLyPhim\QuanLyPhim\bin\Debug\netcoreapp2.1\QuanLyPhim.runtimeconfig.json
+C:\Users\Dong.VTH\source\repos\QuanLyPhim\QuanLyPhim\bin\Debug\netcoreapp2.1\QuanLyPhim.runtimeconfig.dev.json
+C:\Users\Dong.VTH\source\repos\QuanLyPhim\QuanLyPhim\bin\Debug\netcoreapp2.1\QuanLyPhim.dll
+C:\Users\Dong.VTH\source\repos\QuanLyPhim\QuanLyPhim\obj\Debug\netcoreapp2.1\QuanLyPhim.csprojAssemblyReference.cache
+C:\Users\Dong.VTH\source\repos\QuanLyPhim\QuanLyPhim\obj\Debug\netcoreapp2.1\QuanLyPhim.csproj.CoreCompileInputs.cache
+C:\Users\Dong.VTH\source\repos\QuanLyPhim\QuanLyPhim\obj\Debug\netcoreapp2.1\QuanLyPhim.RazorAssemblyInfo.cache
+C:\Users\Dong.VTH\source\repos\QuanLyPhim\QuanLyPhim\obj\Debug\netcoreapp2.1\QuanLyPhim.RazorAssemblyInfo.cs
+C:\Users\Dong.VTH\source\repos\QuanLyPhim\QuanLyPhim\obj\Debug\netcoreapp2.1\QuanLyPhim.AssemblyInfoInputs.cache
+C:\Users\Dong.VTH\source\repos\QuanLyPhim\QuanLyPhim\obj\Debug\netcoreapp2.1\QuanLyPhim.AssemblyInfo.cs
+C:\Users\Dong.VTH\source\repos\QuanLyPhim\QuanLyPhim\obj\Debug\netcoreapp2.1\QuanLyPhim.RazorTargetAssemblyInfo.cache
+C:\Users\Dong.VTH\source\repos\QuanLyPhim\QuanLyPhim\bin\Debug\netcoreapp2.1\QuanLyPhim.pdb
+C:\Users\Dong.VTH\source\repos\QuanLyPhim\QuanLyPhim\obj\Debug\netcoreapp2.1\QuanLyPhim.dll
+C:\Users\Dong.VTH\source\repos\QuanLyPhim\QuanLyPhim\obj\Debug\netcoreapp2.1\QuanLyPhim.pdb

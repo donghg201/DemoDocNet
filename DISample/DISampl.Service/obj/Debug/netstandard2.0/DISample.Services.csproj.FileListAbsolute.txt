@@ -1,0 +1,9 @@
+C:\Users\Dong.VTH\source\repos\DISample\DISampl.Service\bin\Debug\netstandard2.0\DISample.Services.deps.json
+C:\Users\Dong.VTH\source\repos\DISample\DISampl.Service\bin\Debug\netstandard2.0\DISample.Services.dll
+C:\Users\Dong.VTH\source\repos\DISample\DISampl.Service\bin\Debug\netstandard2.0\DISample.Services.pdb
+C:\Users\Dong.VTH\source\repos\DISample\DISampl.Service\obj\Debug\netstandard2.0\DISample.Services.csprojAssemblyReference.cache
+C:\Users\Dong.VTH\source\repos\DISample\DISampl.Service\obj\Debug\netstandard2.0\DISample.Services.csproj.CoreCompileInputs.cache
+C:\Users\Dong.VTH\source\repos\DISample\DISampl.Service\obj\Debug\netstandard2.0\DISample.Services.AssemblyInfoInputs.cache
+C:\Users\Dong.VTH\source\repos\DISample\DISampl.Service\obj\Debug\netstandard2.0\DISample.Services.AssemblyInfo.cs
+C:\Users\Dong.VTH\source\repos\DISample\DISampl.Service\obj\Debug\netstandard2.0\DISample.Services.dll
+C:\Users\Dong.VTH\source\repos\DISample\DISampl.Service\obj\Debug\netstandard2.0\DISample.Services.pdb

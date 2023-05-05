@@ -1,0 +1,14 @@
+C:\Users\Dong.VTH\source\repos\RequestPipeline\RequestPipeline\bin\Debug\netcoreapp2.1\RequestPipeline.deps.json
+C:\Users\Dong.VTH\source\repos\RequestPipeline\RequestPipeline\bin\Debug\netcoreapp2.1\RequestPipeline.runtimeconfig.json
+C:\Users\Dong.VTH\source\repos\RequestPipeline\RequestPipeline\bin\Debug\netcoreapp2.1\RequestPipeline.runtimeconfig.dev.json
+C:\Users\Dong.VTH\source\repos\RequestPipeline\RequestPipeline\bin\Debug\netcoreapp2.1\RequestPipeline.dll
+C:\Users\Dong.VTH\source\repos\RequestPipeline\RequestPipeline\bin\Debug\netcoreapp2.1\RequestPipeline.pdb
+C:\Users\Dong.VTH\source\repos\RequestPipeline\RequestPipeline\obj\Debug\netcoreapp2.1\RequestPipeline.csprojAssemblyReference.cache
+C:\Users\Dong.VTH\source\repos\RequestPipeline\RequestPipeline\obj\Debug\netcoreapp2.1\RequestPipeline.csproj.CoreCompileInputs.cache
+C:\Users\Dong.VTH\source\repos\RequestPipeline\RequestPipeline\obj\Debug\netcoreapp2.1\RequestPipeline.RazorAssemblyInfo.cache
+C:\Users\Dong.VTH\source\repos\RequestPipeline\RequestPipeline\obj\Debug\netcoreapp2.1\RequestPipeline.RazorAssemblyInfo.cs
+C:\Users\Dong.VTH\source\repos\RequestPipeline\RequestPipeline\obj\Debug\netcoreapp2.1\RequestPipeline.AssemblyInfoInputs.cache
+C:\Users\Dong.VTH\source\repos\RequestPipeline\RequestPipeline\obj\Debug\netcoreapp2.1\RequestPipeline.AssemblyInfo.cs
+C:\Users\Dong.VTH\source\repos\RequestPipeline\RequestPipeline\obj\Debug\netcoreapp2.1\RequestPipeline.RazorTargetAssemblyInfo.cache
+C:\Users\Dong.VTH\source\repos\RequestPipeline\RequestPipeline\obj\Debug\netcoreapp2.1\RequestPipeline.dll
+C:\Users\Dong.VTH\source\repos\RequestPipeline\RequestPipeline\obj\Debug\netcoreapp2.1\RequestPipeline.pdb

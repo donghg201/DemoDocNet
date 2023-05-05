@@ -1,0 +1,14 @@
+C:\Users\Dong.VTH\source\repos\Test1\Test1\obj\Debug\netcoreapp2.1\RepositoryPatternDemo.csprojAssemblyReference.cache
+C:\Users\Dong.VTH\source\repos\Test1\Test1\obj\Debug\netcoreapp2.1\RepositoryPatternDemo.csproj.CoreCompileInputs.cache
+C:\Users\Dong.VTH\source\repos\Test1\Test1\obj\Debug\netcoreapp2.1\RepositoryPatternDemo.RazorAssemblyInfo.cache
+C:\Users\Dong.VTH\source\repos\Test1\Test1\obj\Debug\netcoreapp2.1\RepositoryPatternDemo.RazorAssemblyInfo.cs
+C:\Users\Dong.VTH\source\repos\Test1\Test1\obj\Debug\netcoreapp2.1\RepositoryPatternDemo.AssemblyInfoInputs.cache
+C:\Users\Dong.VTH\source\repos\Test1\Test1\obj\Debug\netcoreapp2.1\RepositoryPatternDemo.AssemblyInfo.cs
+C:\Users\Dong.VTH\source\repos\Test1\Test1\bin\Debug\netcoreapp2.1\RepositoryPatternDemo.deps.json
+C:\Users\Dong.VTH\source\repos\Test1\Test1\bin\Debug\netcoreapp2.1\RepositoryPatternDemo.runtimeconfig.json
+C:\Users\Dong.VTH\source\repos\Test1\Test1\bin\Debug\netcoreapp2.1\RepositoryPatternDemo.runtimeconfig.dev.json
+C:\Users\Dong.VTH\source\repos\Test1\Test1\bin\Debug\netcoreapp2.1\RepositoryPatternDemo.dll
+C:\Users\Dong.VTH\source\repos\Test1\Test1\bin\Debug\netcoreapp2.1\RepositoryPatternDemo.pdb
+C:\Users\Dong.VTH\source\repos\Test1\Test1\obj\Debug\netcoreapp2.1\RepositoryPatternDemo.RazorTargetAssemblyInfo.cache
+C:\Users\Dong.VTH\source\repos\Test1\Test1\obj\Debug\netcoreapp2.1\RepositoryPatternDemo.dll
+C:\Users\Dong.VTH\source\repos\Test1\Test1\obj\Debug\netcoreapp2.1\RepositoryPatternDemo.pdb
