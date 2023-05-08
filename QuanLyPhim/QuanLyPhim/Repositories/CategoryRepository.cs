@@ -35,6 +35,14 @@ namespace QuanLyPhim.Repositories
         public Category FindById(int id)
         {
             return _context.Categories.FirstOrDefault(cat => cat.Id == id);
+
+            //var category = await (from c in _context.Categories
+            //                where c.Id == id
+            //                select c).FirstOrDefault();
+            //var e = this._context.Entry(category);
+            //e.Collection(c => c.Movies).LoadAsync();
+
+            //return category;
         }
 
         public void Update(Category entity, int id)

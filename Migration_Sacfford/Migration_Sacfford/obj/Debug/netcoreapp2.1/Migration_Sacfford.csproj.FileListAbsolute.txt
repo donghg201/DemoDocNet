@@ -1,0 +1,14 @@
+C:\Users\Dong.VTH\source\repos\Migration_Sacfford\Migration_Sacfford\bin\Debug\netcoreapp2.1\Migration_Sacfford.deps.json
+C:\Users\Dong.VTH\source\repos\Migration_Sacfford\Migration_Sacfford\bin\Debug\netcoreapp2.1\Migration_Sacfford.runtimeconfig.json
+C:\Users\Dong.VTH\source\repos\Migration_Sacfford\Migration_Sacfford\bin\Debug\netcoreapp2.1\Migration_Sacfford.runtimeconfig.dev.json
+C:\Users\Dong.VTH\source\repos\Migration_Sacfford\Migration_Sacfford\bin\Debug\netcoreapp2.1\Migration_Sacfford.dll
+C:\Users\Dong.VTH\source\repos\Migration_Sacfford\Migration_Sacfford\obj\Debug\netcoreapp2.1\Migration_Sacfford.csprojAssemblyReference.cache
+C:\Users\Dong.VTH\source\repos\Migration_Sacfford\Migration_Sacfford\obj\Debug\netcoreapp2.1\Migration_Sacfford.csproj.CoreCompileInputs.cache
+C:\Users\Dong.VTH\source\repos\Migration_Sacfford\Migration_Sacfford\obj\Debug\netcoreapp2.1\Migration_Sacfford.RazorAssemblyInfo.cache
+C:\Users\Dong.VTH\source\repos\Migration_Sacfford\Migration_Sacfford\obj\Debug\netcoreapp2.1\Migration_Sacfford.RazorAssemblyInfo.cs
+C:\Users\Dong.VTH\source\repos\Migration_Sacfford\Migration_Sacfford\obj\Debug\netcoreapp2.1\Migration_Sacfford.AssemblyInfoInputs.cache
+C:\Users\Dong.VTH\source\repos\Migration_Sacfford\Migration_Sacfford\obj\Debug\netcoreapp2.1\Migration_Sacfford.AssemblyInfo.cs
+C:\Users\Dong.VTH\source\repos\Migration_Sacfford\Migration_Sacfford\obj\Debug\netcoreapp2.1\Migration_Sacfford.RazorTargetAssemblyInfo.cache
+C:\Users\Dong.VTH\source\repos\Migration_Sacfford\Migration_Sacfford\bin\Debug\netcoreapp2.1\Migration_Sacfford.pdb
+C:\Users\Dong.VTH\source\repos\Migration_Sacfford\Migration_Sacfford\obj\Debug\netcoreapp2.1\Migration_Sacfford.dll
+C:\Users\Dong.VTH\source\repos\Migration_Sacfford\Migration_Sacfford\obj\Debug\netcoreapp2.1\Migration_Sacfford.pdb

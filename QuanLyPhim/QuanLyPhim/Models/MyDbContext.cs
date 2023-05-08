@@ -11,8 +11,10 @@ namespace QuanLyPhim.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            base.OnConfiguring(optionsBuilder);
             optionsBuilder.UseSqlServer(
-               "Data Source = GDIT019PC\\SQLEXPRESS;Initial Catalog = QuanLyPhim; Integrated Security = True");
+               "Data Source=GDIT019PC\\SQLEXPRESS;Initial Catalog=QuanLyPhim2;Integrated Security=True");
+            //optionsBuilder.UseLazyLoadingProxies();
         }
 
         public DbSet<Movie> Movies { get; set; }

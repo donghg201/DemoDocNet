@@ -1,0 +1,11 @@
+C:\Users\Dong.VTH\source\repos\LinQDemo\LinQDemo\bin\Debug\netcoreapp2.1\LinQDemo.deps.json
+C:\Users\Dong.VTH\source\repos\LinQDemo\LinQDemo\bin\Debug\netcoreapp2.1\LinQDemo.runtimeconfig.json
+C:\Users\Dong.VTH\source\repos\LinQDemo\LinQDemo\bin\Debug\netcoreapp2.1\LinQDemo.runtimeconfig.dev.json
+C:\Users\Dong.VTH\source\repos\LinQDemo\LinQDemo\bin\Debug\netcoreapp2.1\LinQDemo.dll
+C:\Users\Dong.VTH\source\repos\LinQDemo\LinQDemo\bin\Debug\netcoreapp2.1\LinQDemo.pdb
+C:\Users\Dong.VTH\source\repos\LinQDemo\LinQDemo\obj\Debug\netcoreapp2.1\LinQDemo.csprojAssemblyReference.cache
+C:\Users\Dong.VTH\source\repos\LinQDemo\LinQDemo\obj\Debug\netcoreapp2.1\LinQDemo.csproj.CoreCompileInputs.cache
+C:\Users\Dong.VTH\source\repos\LinQDemo\LinQDemo\obj\Debug\netcoreapp2.1\LinQDemo.AssemblyInfoInputs.cache
+C:\Users\Dong.VTH\source\repos\LinQDemo\LinQDemo\obj\Debug\netcoreapp2.1\LinQDemo.AssemblyInfo.cs
+C:\Users\Dong.VTH\source\repos\LinQDemo\LinQDemo\obj\Debug\netcoreapp2.1\LinQDemo.dll
+C:\Users\Dong.VTH\source\repos\LinQDemo\LinQDemo\obj\Debug\netcoreapp2.1\LinQDemo.pdb

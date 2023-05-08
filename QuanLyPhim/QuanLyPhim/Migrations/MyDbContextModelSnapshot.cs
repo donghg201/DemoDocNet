@@ -40,7 +40,7 @@ namespace QuanLyPhim.Migrations
 
                     b.Property<string>("Actor");
 
-                    b.Property<int?>("CategoryId");
+                    b.Property<int>("CateId");
 
                     b.Property<string>("Director");
 
@@ -56,7 +56,7 @@ namespace QuanLyPhim.Migrations
 
                     b.HasKey("MovieId");
 
-                    b.HasIndex("CategoryId");
+                    b.HasIndex("CateId");
 
                     b.ToTable("Movies");
                 });
@@ -65,7 +65,8 @@ namespace QuanLyPhim.Migrations
                 {
                     b.HasOne("QuanLyPhim.Models.Category", "Category")
                         .WithMany()
-                        .HasForeignKey("CategoryId");
+                        .HasForeignKey("CateId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

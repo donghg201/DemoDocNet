@@ -12,6 +12,7 @@ namespace QuanLyPhim.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
         public int MovieId { get; set; }
+        //[StringLength(10,ErrorMessage ="Not enough length")]
         public string MovieName { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
@@ -20,6 +21,8 @@ namespace QuanLyPhim.Models
         public string MovieStudio { get; set; }
         public string PosterMovie { get; set; }
 
+        public int CateId { get; set; }
+        [ForeignKey("CateId")]
         public Category Category { get; set; }
     }
 }
