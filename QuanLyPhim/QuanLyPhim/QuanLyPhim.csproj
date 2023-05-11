@@ -7,6 +7,24 @@
   <ItemGroup>
     <Compile Remove="Migrations\20230508014706_TestFK.cs" />
     <Compile Remove="Migrations\20230508014706_TestFK.Designer.cs" />
+    <Compile Remove="Migrations\20230511011033_Tes1.cs" />
+    <Compile Remove="Migrations\20230511011033_Tes1.Designer.cs" />
+    <Compile Remove="Migrations\20230511011337_MigrationTwo.cs" />
+    <Compile Remove="Migrations\20230511011337_MigrationTwo.Designer.cs" />
+    <Compile Remove="Migrations\20230511011358_MigrationThree.cs" />
+    <Compile Remove="Migrations\20230511011358_MigrationThree.Designer.cs" />
+    <Compile Remove="Migrations\20230511011710_MigrationTwo.cs" />
+    <Compile Remove="Migrations\20230511011710_MigrationTwo.Designer.cs" />
+    <Compile Remove="Migrations\20230511011938_MigrationThree.cs" />
+    <Compile Remove="Migrations\20230511011938_MigrationThree.Designer.cs" />
+    <Compile Remove="Migrations\20230511022427_MigrationFour.cs" />
+    <Compile Remove="Migrations\20230511022427_MigrationFour.Designer.cs" />
+    <Compile Remove="Migrations\20230511022516_MigrationFive.cs" />
+    <Compile Remove="Migrations\20230511022516_MigrationFive.Designer.cs" />
+    <Compile Remove="Migrations\20230511022549_MigrationFour.cs" />
+    <Compile Remove="Migrations\20230511022549_MigrationFour.Designer.cs" />
+    <Compile Remove="Migrations\20230511022912_MigrationThree.cs" />
+    <Compile Remove="Migrations\20230511022912_MigrationThree.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

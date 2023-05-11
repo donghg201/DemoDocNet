@@ -1,4 +1,5 @@
-﻿using QuanLyPhim.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using QuanLyPhim.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,7 +35,22 @@ namespace QuanLyPhim.Repositories
 
         public Movie FindById(int id)
         {
-            return this._context.Movies.FirstOrDefault(mov => mov.MovieId == id);
+            // SQL query
+            var movie = this._context.Movies.FromSql($"Select * from dbo.Movies m where m.MovieId = {id}").FirstOrDefault();
+
+
+            //Method query - 21ms
+            //var movie = this._context.Movies.FirstOrDefault(m => m.MovieId == id);
+
+            // Linq query
+            //var movie = (from m in _context.Movies
+            //             where m.MovieId == id
+            //             select m).FirstOrDefault();
+
+
+            //return this._context.Movies.FirstOrDefault(mov => mov.MovieId == id);
+
+            return movie;
         }
 
         public void Update(Movie entity, int id)

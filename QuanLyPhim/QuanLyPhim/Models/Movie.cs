@@ -20,9 +20,10 @@ namespace QuanLyPhim.Models
         public string Director { get; set; }
         public string MovieStudio { get; set; }
         public string PosterMovie { get; set; }
+        public string Note { get; set; }
 
-        public int CateId { get; set; }
-        [ForeignKey("CateId")]
-        public Category Category { get; set; }
+        //public int CateId { get; set; }
+        //[ForeignKey("CateId")]
+        //public Category Category { get; set; }
     }
 }

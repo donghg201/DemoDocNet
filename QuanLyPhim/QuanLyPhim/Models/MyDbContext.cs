@@ -13,7 +13,7 @@ namespace QuanLyPhim.Models
         {
             base.OnConfiguring(optionsBuilder);
             optionsBuilder.UseSqlServer(
-               "Data Source=GDIT019PC\\SQLEXPRESS;Initial Catalog=QuanLyPhim2;Integrated Security=True");
+               "Data Source=DESKTOP-8H3JR7M;Initial Catalog=QuanLyPhim;Integrated Security=True");
             //optionsBuilder.UseLazyLoadingProxies();
         }
 
