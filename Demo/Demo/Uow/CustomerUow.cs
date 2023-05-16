@@ -14,8 +14,8 @@ namespace Demo.Uow
             this._context = context;
         }
 
-        private IRepository<Customer> customerRepository;
-        public IRepository<Customer> CustomerRepository
+        private IRepositoryInt<Customer> customerRepository;
+        public IRepositoryInt<Customer> CustomerRepository
         {
             get
             {

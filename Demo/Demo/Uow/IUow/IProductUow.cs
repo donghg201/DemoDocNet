@@ -3,8 +3,9 @@ using Demo.Repositories.IRepositories;
 
 namespace Demo.Uow.IUow
 {
-    public interface IProductTypeUow
+    public interface IProductUow
     {
+        IRepositoryString<Product> ProductRepository { get; }
         IRepositoryString<ProductType> ProductTypeRepository { get; }
 
         void SaveChanges();

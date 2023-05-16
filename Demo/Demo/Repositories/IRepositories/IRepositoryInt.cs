@@ -2,7 +2,7 @@
 
 namespace Demo.Repositories.IRepositories
 {
-    public interface IRepository<T> where T : class
+    public interface IRepositoryInt<T> where T : class
     {
         List<T> FetchAll();
         T FindById(int id);

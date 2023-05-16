@@ -1,17 +1,30 @@
 ﻿using Demo.Models;
-using Demo.Repositories;
 using Demo.Repositories.IRepositories;
+using Demo.Repositories;
 using Demo.Uow.IUow;
 
 namespace Demo.Uow
 {
-    public class ProductTypeUow : IProductTypeUow
+    public class ProductUow : IProductUow
     {
         private readonly MyDbContext _context;
 
-        public ProductTypeUow(MyDbContext context)
+        public ProductUow(MyDbContext context)
         {
             this._context = context;
+        }
+
+        private IRepositoryString<Product> productRepository;
+        public IRepositoryString<Product> ProductRepository
+        {
+            get
+            {
+                if (productRepository == null)
+                {
+                    productRepository = new ProductRepository(_context);
+                }
+                return productRepository;
+            }
         }
 
         private IRepositoryString<ProductType> productTypeRepository;

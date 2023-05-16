@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace Demo.Repositories
 {
-    public class CustomerRepository : IRepository<Customer>
+    public class CustomerRepository : IRepositoryInt<Customer>
     {
         private readonly MyDbContext _context;
 

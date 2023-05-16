@@ -5,7 +5,7 @@ namespace Demo.Uow.IUow
 {
     public interface IBranchUow
     {
-        IRepository<Branch> BranchRepository { get; }
+        IRepositoryInt<Branch> BranchRepository { get; }
 
         void SaveChanges();
     }

@@ -27,8 +27,8 @@ namespace Demo.Uow
             }
         }
 
-        private IRepository<Branch> branchRepository;
-        public IRepository<Branch> BranchRepository
+        private IRepositoryInt<Branch> branchRepository;
+        public IRepositoryInt<Branch> BranchRepository
         {
             get
             {
@@ -40,8 +40,8 @@ namespace Demo.Uow
             }
         }
 
-        private IRepository<Department> departmentRepository;
-        public IRepository<Department> DepartmentRepository
+        private IRepositoryInt<Department> departmentRepository;
+        public IRepositoryInt<Department> DepartmentRepository
         {
             get
             {

@@ -5,7 +5,7 @@ namespace Demo.Uow.IUow
 {
     public interface IDepartmentUow
     {
-        IRepository<Department> DepartmentRepository { get; }
+        IRepositoryInt<Department> DepartmentRepository { get; }
 
         void SaveChanges();
     }

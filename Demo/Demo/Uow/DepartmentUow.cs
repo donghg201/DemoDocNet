@@ -14,8 +14,8 @@ namespace Demo.Uow
             this._context = context;
         }
 
-        private IRepository<Department> departmentRepository;
-        public IRepository<Department> DepartmentRepository
+        private IRepositoryInt<Department> departmentRepository;
+        public IRepositoryInt<Department> DepartmentRepository
         {
             get
             {

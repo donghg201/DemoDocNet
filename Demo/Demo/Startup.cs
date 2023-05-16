@@ -37,17 +37,17 @@ namespace Demo
             services.AddScoped<MyDbContext>();
 
 
-            services.AddScoped<IRepository<Branch>, BranchRepository>();
+            services.AddScoped<IRepositoryInt<Branch>, BranchRepository>();
             services.AddScoped<IBranchUow, BranchUow>();
             services.AddScoped<BranchService>();
 
-            services.AddScoped<IRepository<Customer>, CustomerRepository>();
+            services.AddScoped<IRepositoryInt<Customer>, CustomerRepository>();
             services.AddScoped<IBussinessRepository<Bussiness>, BussinessRepository>();
             services.AddScoped<IIndividualRepository<Individual>, IndividualRepository>();
             services.AddScoped<ICustomerUow, CustomerUow>();
             services.AddScoped<CustomerService>();
 
-            services.AddScoped<IRepository<Department>, DepartmentRepository>();
+            services.AddScoped<IRepositoryInt<Department>, DepartmentRepository>();
             services.AddScoped<IDepartmentUow, DepartmentUow>();
             services.AddScoped<DepartmentService>();
 
@@ -55,9 +55,13 @@ namespace Demo
             services.AddScoped<IEmployeeUow, EmployeeUow>();
             services.AddScoped<EmployeeService>();
 
-            services.AddScoped<IProductTypeRepository<ProductType>, ProductTypeRepository>();
+            services.AddScoped<IRepositoryString<ProductType>, ProductTypeRepository>();
             services.AddScoped<IProductTypeUow, ProductTypeUow>();
             services.AddScoped<ProductTypeService>();
+
+            services.AddScoped<IRepositoryString<Product>, ProductRepository>();
+            services.AddScoped<IProductUow, ProductUow>();
+            services.AddScoped<ProductService>();
 
             services.AddSwaggerGen(c =>
             {
