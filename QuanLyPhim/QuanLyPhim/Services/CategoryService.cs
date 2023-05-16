@@ -22,7 +22,7 @@ namespace QuanLyPhim.Services
             this._uow.SaveChanges();
         }
 
-        public List<Category> GetAllCategory()
+        public IEnumerable<Category> GetAllCategory()
         {
             return this._uow.CategoryRepository.FetchAll();
         }

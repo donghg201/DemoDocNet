@@ -25,6 +25,8 @@
     <Compile Remove="Migrations\20230511022549_MigrationFour.Designer.cs" />
     <Compile Remove="Migrations\20230511022912_MigrationThree.cs" />
     <Compile Remove="Migrations\20230511022912_MigrationThree.Designer.cs" />
+    <Compile Remove="Migrations\20230511075717_test.cs" />
+    <Compile Remove="Migrations\20230511075717_test.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Castle.Core.Internal;
+using Microsoft.EntityFrameworkCore;
 using QuanLyPhim.Models;
 using System;
 using System.Collections.Generic;
@@ -28,27 +29,33 @@ namespace QuanLyPhim.Repositories
             this._context.Movies.Remove(movie);
         }
 
-        public List<Movie> FetchAll()
+        public IEnumerable<Movie> FetchAll()
         {
-            return this._context.Movies.ToList();
+            var movies = this._context.Movies.ToList();
+
+            //IEnumerable<Movie> movies = this._context.Movies.FromSql($"select * from dbo.Movies").ToList();
+
+            //IEnumerable<Movie> movies = (from m in _context.Movies
+            //select m).ToList();
+
+
+            return movies;
         }
 
         public Movie FindById(int id)
         {
-            // SQL query
-            var movie = this._context.Movies.FromSql($"Select * from dbo.Movies m where m.MovieId = {id}").FirstOrDefault();
+            // Method syntax
+            var movie = this._context.Movies.Where(m => m.MovieId == id).FirstOrDefault();
 
 
-            //Method query - 21ms
-            //var movie = this._context.Movies.FirstOrDefault(m => m.MovieId == id);
+            // SQL query syntax
+            var movie1 = this._context.Movies.
+            FromSql($"Select * from dbo.Movies m where m.MovieId = {id}").FirstOrDefault();
 
-            // Linq query
-            //var movie = (from m in _context.Movies
-            //             where m.MovieId == id
-            //             select m).FirstOrDefault();
-
-
-            //return this._context.Movies.FirstOrDefault(mov => mov.MovieId == id);
+            // Linq query syntax
+            var movie2 = (from m in _context.Movies
+                         where m.MovieId == id
+                         select m).FirstOrDefault();
 
             return movie;
         }
@@ -63,6 +70,7 @@ namespace QuanLyPhim.Repositories
             movie.Director = entity.Director;
             movie.MovieStudio = entity.MovieStudio;
             movie.PosterMovie = entity.PosterMovie;
+            movie.Note = entity.Note;
         }
     }
 }

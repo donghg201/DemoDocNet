@@ -21,7 +21,7 @@ namespace QuanLyPhim.Controllers
         }
 
         [HttpGet]
-        public List<Category> GetAll()
+        public IEnumerable<Category> GetAll()
         {
             return this._categoryService.GetAllCategory();
         }

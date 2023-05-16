@@ -7,7 +7,7 @@ namespace QuanLyPhim.Repositories
 {
     public interface IRepository<T> where T : class
     {
-        List<T> FetchAll();
+        IEnumerable<T> FetchAll();
         T FindById(int id);
         T Add(T entity);
         void Update(T entity, int id);

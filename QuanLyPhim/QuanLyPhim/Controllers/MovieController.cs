@@ -21,7 +21,7 @@ namespace QuanLyPhim.Controllers
         }
 
         [HttpGet]
-        public List<Movie> GetAll()
+        public IEnumerable<Movie> GetAll()
         {
             return this._movieService.GetAllMovie();
         }

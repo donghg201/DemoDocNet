@@ -27,7 +27,7 @@ namespace QuanLyPhim.Repositories
             this._context.Categories.Remove(category);
         }
 
-        public List<Category> FetchAll()
+        public IEnumerable<Category> FetchAll()
         {
             return this._context.Categories.ToList();
         }

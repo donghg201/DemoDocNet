@@ -17,9 +17,9 @@ namespace RequestPipeline.Middlewares
 
         public async Task Invoke(HttpContext context)
         {
-            await context.Response.WriteAsync("abc1");
+            await context.Response.WriteAsync("abc1 \n");
             await _next(context);
-            await context.Response.WriteAsync("abc3");
+            await context.Response.WriteAsync("abc3 \n");
         }
     }
 }

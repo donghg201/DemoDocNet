@@ -22,7 +22,7 @@ namespace QuanLyPhim.Services
             this._uow.SaveChanges();
         }
 
-        public List<Movie> GetAllMovie()
+        public IEnumerable<Movie> GetAllMovie()
         {
             return this._uow.MovieRepository.FetchAll();
         }
