@@ -14,8 +14,8 @@ namespace Demo.Uow
             this._context = context;
         }
 
-        private IRepositoryString<ProductType> productTypeRepository;
-        public IRepositoryString<ProductType> ProductTypeRepository
+        private IProductTypeRepository<ProductType> productTypeRepository;
+        public IProductTypeRepository<ProductType> ProductTypeRepository
         {
             get
             {

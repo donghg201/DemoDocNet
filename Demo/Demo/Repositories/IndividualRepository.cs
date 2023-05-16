@@ -1,10 +1,11 @@
 ﻿using Demo.Models;
 using Demo.Repositories.IRepositories;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Demo.Repositories
 {
-    public class IndividualRepository : IRepository<Individual>
+    public class IndividualRepository : IIndividualRepository<Individual>
     {
         private readonly MyDbContext _context;
 
@@ -19,7 +20,7 @@ namespace Demo.Repositories
             return entity;
         }
 
-        public void Delete(int id)
+        public void Delete(string id)
         {
             throw new System.NotImplementedException();
         }
@@ -29,12 +30,20 @@ namespace Demo.Repositories
             throw new System.NotImplementedException();
         }
 
-        public Individual FindById(int id)
+        public Individual FindById(string id)
         {
             throw new System.NotImplementedException();
         }
 
-        public void Update(Individual entity, int id)
+        public Individual GetIndividualByFirstName(string name)
+        {
+            var individual = (from i in this._context.Individuals
+                              where i.FirstName == name
+                              select i).FirstOrDefault();
+            return individual;
+        }
+
+        public void Update(Individual entity, string id)
         {
             throw new System.NotImplementedException();
         }

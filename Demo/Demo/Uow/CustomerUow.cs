@@ -27,8 +27,8 @@ namespace Demo.Uow
             }
         }
 
-        private IRepository<Bussiness> businessRepository;
-        public IRepository<Bussiness> BusinessRepository
+        private IBussinessRepository<Bussiness> businessRepository;
+        public IBussinessRepository<Bussiness> BusinessRepository
         {
             get
             {
@@ -40,8 +40,8 @@ namespace Demo.Uow
             }
         }
 
-        private IRepository<Individual> individualRepository;
-        public IRepository<Individual> IndividualRepository
+        private IIndividualRepository<Individual> individualRepository;
+        public IIndividualRepository<Individual> IndividualRepository
         {
             get
             {

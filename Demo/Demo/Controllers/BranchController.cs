@@ -34,7 +34,7 @@ namespace Demo.Controllers
         public IActionResult Add([FromBody] BranchDto branch)
         {
             this._branchService.AddBranch(branch);
-            return Ok("Create successfully!");
+            return Ok(branch);
         }
 
         [HttpPut("{id}")]

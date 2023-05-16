@@ -14,8 +14,8 @@ namespace Demo.Uow
             this._context = context;
         }
 
-        private IRepository<Employee> employeeRepository;
-        public IRepository<Employee> EmployeeRepository
+        private IEmployeeRepository<Employee> employeeRepository;
+        public IEmployeeRepository<Employee> EmployeeRepository
         {
             get
             {
@@ -24,6 +24,32 @@ namespace Demo.Uow
                     employeeRepository = new EmployeeRepository(_context);
                 }
                 return employeeRepository;
+            }
+        }
+
+        private IRepository<Branch> branchRepository;
+        public IRepository<Branch> BranchRepository
+        {
+            get
+            {
+                if (branchRepository == null)
+                {
+                    branchRepository = new BranchRepository(_context);
+                }
+                return branchRepository;
+            }
+        }
+
+        private IRepository<Department> departmentRepository;
+        public IRepository<Department> DepartmentRepository
+        {
+            get
+            {
+                if (departmentRepository == null)
+                {
+                    departmentRepository = new DepartmentRepository(_context);
+                }
+                return departmentRepository;
             }
         }
 

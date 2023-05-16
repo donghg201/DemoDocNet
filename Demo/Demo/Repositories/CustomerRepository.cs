@@ -1,6 +1,7 @@
 ﻿using Demo.Models;
 using Demo.Repositories.IRepositories;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Demo.Repositories
 {
@@ -39,5 +40,12 @@ namespace Demo.Repositories
             throw new System.NotImplementedException();
         }
         
+        public Bussiness GetBussinessByStateId(string id)
+        {
+            var bussiness = (from b in _context.Bussiness
+                             where b.StateId == id
+                             select b).FirstOrDefault();
+            return bussiness;
+        }
     }
 }

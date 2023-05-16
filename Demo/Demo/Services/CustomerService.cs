@@ -63,5 +63,15 @@ namespace Demo.Services
             this._uow.CustomerRepository.Add(_customer);
             this._uow.SaveChanges();
         }
+
+        public Bussiness GetBussinessByStateId(string id)
+        {
+            return this._uow.BusinessRepository.GetBussinessByStateId(id);
+        }
+
+        public Individual GetIndividualByFirstName(string name)
+        {
+            return this._uow.IndividualRepository.GetIndividualByFirstName(name);
+        }
     }
 }

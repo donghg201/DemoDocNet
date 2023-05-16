@@ -5,7 +5,7 @@ namespace Demo.Uow.IUow
 {
     public interface IProductTypeUow
     {
-        IRepositoryString<ProductType> ProductTypeRepository { get; }
+        IProductTypeRepository<ProductType> ProductTypeRepository { get; }
 
         void SaveChanges();
     }

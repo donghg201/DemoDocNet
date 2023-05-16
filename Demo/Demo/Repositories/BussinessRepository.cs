@@ -1,10 +1,11 @@
 ﻿using Demo.Models;
 using Demo.Repositories.IRepositories;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Demo.Repositories
 {
-    public class BussinessRepository : IRepository<Bussiness>
+    public class BussinessRepository : IBussinessRepository<Bussiness>
     {
         private readonly MyDbContext _context;
 
@@ -19,22 +20,30 @@ namespace Demo.Repositories
             return entity;
         }
 
-        public void Delete(int id)
+        public Bussiness GetBussinessByStateId(string id)
+        {
+            var bussiness = (from b in _context.Bussiness
+                             where b.StateId == id
+                             select b).FirstOrDefault();
+            return bussiness;
+        }
+
+        public Bussiness FindById(string id)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void Update(Bussiness entity, string id)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void Delete(string id)
         {
             throw new System.NotImplementedException();
         }
 
         public List<Bussiness> FetchAll()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public Bussiness FindById(int id)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void Update(Bussiness entity, int id)
         {
             throw new System.NotImplementedException();
         }

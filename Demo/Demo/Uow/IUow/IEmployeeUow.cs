@@ -5,7 +5,9 @@ namespace Demo.Uow.IUow
 {
     public interface IEmployeeUow
     {
-        IRepository<Employee> EmployeeRepository { get; }
+        IEmployeeRepository<Employee> EmployeeRepository { get; }
+        IRepository<Branch> BranchRepository { get; }
+        IRepository<Department> DepartmentRepository { get; }
 
         void SaveChanges();
     }

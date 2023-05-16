@@ -42,8 +42,8 @@ namespace Demo
             services.AddScoped<BranchService>();
 
             services.AddScoped<IRepository<Customer>, CustomerRepository>();
-            services.AddScoped<IRepository<Bussiness>, BussinessRepository>();
-            services.AddScoped<IRepository<Individual>, IndividualRepository>();
+            services.AddScoped<IBussinessRepository<Bussiness>, BussinessRepository>();
+            services.AddScoped<IIndividualRepository<Individual>, IndividualRepository>();
             services.AddScoped<ICustomerUow, CustomerUow>();
             services.AddScoped<CustomerService>();
 
@@ -51,11 +51,11 @@ namespace Demo
             services.AddScoped<IDepartmentUow, DepartmentUow>();
             services.AddScoped<DepartmentService>();
 
-            services.AddScoped<IRepository<Employee>, EmployeeRepository>();
+            services.AddScoped<IEmployeeRepository<Employee>, EmployeeRepository>();
             services.AddScoped<IEmployeeUow, EmployeeUow>();
             services.AddScoped<EmployeeService>();
 
-            services.AddScoped<IRepositoryString<ProductType>, ProductTypeRepository>();
+            services.AddScoped<IProductTypeRepository<ProductType>, ProductTypeRepository>();
             services.AddScoped<IProductTypeUow, ProductTypeUow>();
             services.AddScoped<ProductTypeService>();
 

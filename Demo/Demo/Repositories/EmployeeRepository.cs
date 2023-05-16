@@ -1,10 +1,11 @@
 ﻿using Demo.Models;
 using Demo.Repositories.IRepositories;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Demo.Repositories
 {
-    public class EmployeeRepository : IRepository<Employee>
+    public class EmployeeRepository : IEmployeeRepository<Employee>
     {
         private readonly MyDbContext _context;
 
@@ -37,6 +38,14 @@ namespace Demo.Repositories
         public void Update(Employee entity, int id)
         {
             throw new System.NotImplementedException();
+        }
+
+        public Employee FindBySupId(int id)
+        {
+            var employee = (from e in _context.Employees
+                            where e.SuperiorEmpId == id
+                            select e).FirstOrDefault();
+            return employee;
         }
     }
 }
