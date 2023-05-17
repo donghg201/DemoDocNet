@@ -5,18 +5,18 @@ using System.Linq;
 
 namespace Demo.Repositories
 {
-    public class AccountRepository : IRepositoryInt<Account>
+    public class AccTransactionRepository : IRepositoryInt<AccTransaction>
     {
         private readonly MyDbContext _context;
 
-        public AccountRepository(MyDbContext context)
+        public AccTransactionRepository(MyDbContext context)
         {
             this._context = context;
         }
 
-        public Account Add(Account entity)
+        public AccTransaction Add(AccTransaction entity)
         {
-            this._context.Accounts.Add(entity);
+            this._context.AccTransactions.Add(entity);
             return entity;
         }
 
@@ -25,20 +25,20 @@ namespace Demo.Repositories
             throw new System.NotImplementedException();
         }
 
-        public List<Account> FetchAll()
+        public List<AccTransaction> FetchAll()
         {
             throw new System.NotImplementedException();
         }
 
-        public Account FindById(int id)
+        public AccTransaction FindById(int id)
         {
-            var account = (from a in _context.Accounts
-                             where a.AccountId == id
-                             select a).FirstOrDefault();
-            return account;
+            var accTrans = (from a in _context.AccTransactions
+                           where a.TxnId == id
+                           select a).FirstOrDefault();
+            return accTrans;
         }
 
-        public void Update(Account entity, int id)
+        public void Update(AccTransaction entity, int id)
         {
             throw new System.NotImplementedException();
         }

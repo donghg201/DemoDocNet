@@ -33,6 +33,5 @@ namespace Demo.Models
 
         public List<Bussiness> Bussiness { get; set; }
         public List<Individual> Individuals { get; set; }
-        public List<Account> Accounts { get; set; }
     }
 }

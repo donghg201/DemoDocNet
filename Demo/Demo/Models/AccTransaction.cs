@@ -7,7 +7,7 @@ namespace Demo.Models
     public class AccTransaction
     {
         [Key]
-        [Range(0, 19)]
+        [Range(0, 999999999)]
         [Required]
         public int TxnId { get; set; }
 
@@ -30,9 +30,13 @@ namespace Demo.Models
 
         [Range(0, 10)]
         public int? ExecutionBranchId { get; set; }
+        [ForeignKey("ExecutionBranchId")]
+        public Branch Branch { get; set; }
 
         [Range(0, 10)]
         public int? TellerEmpId { get; set; }
+        [ForeignKey("TellerEmpId")]
+        public Employee Employee { get; set; }
 
     }
 }

@@ -2,6 +2,7 @@
 using Demo.Models;
 using Demo.Uow.IUow;
 using System;
+using System.Collections.Generic;
 
 namespace Demo.Services
 {
@@ -72,6 +73,31 @@ namespace Demo.Services
         public Individual GetIndividualByFirstName(string name)
         {
             return this._uow.IndividualRepository.GetIndividualByFirstName(name);
+        }
+
+        public List<Customer> GetInfoCustomerIndividual(string name)
+        {
+            return this._uow.CustomerRepository.GetInfoCustomerIndividual(name);
+        }
+        
+        public List<Customer> GetInfoCustomerBussiness(string name)
+        {
+            //List<CustomerBussinessDto> result = new List<CustomerBussinessDto>();
+            //List<Customer> customerList = this._uow.CustomerRepository.GetInfoCustomerBussiness(name);
+            //foreach (var cus in customerList)
+            //{
+            //    CustomerBussinessDto customer = new()
+            //    {
+            //        Address = cus.Address,
+            //        City = cus.City,
+            //        CustTypeCd = cus.CustTypeCd,
+
+            //    };
+            //    result.Add(customer);
+            //}
+            //return result;
+            return this._uow.CustomerRepository.GetInfoCustomerBussiness(name);
+
         }
     }
 }

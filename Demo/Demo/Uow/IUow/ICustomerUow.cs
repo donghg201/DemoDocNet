@@ -5,7 +5,7 @@ namespace Demo.Uow.IUow
 {
     public interface ICustomerUow
     {
-        IRepositoryInt<Customer> CustomerRepository { get; }
+        ICustomerRepository<Customer> CustomerRepository { get; }
         IBussinessRepository<Bussiness> BusinessRepository { get; }
         IIndividualRepository<Individual> IndividualRepository { get; }
 

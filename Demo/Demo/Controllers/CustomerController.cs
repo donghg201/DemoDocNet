@@ -1,7 +1,9 @@
 ﻿using Demo.Dto;
+using Demo.Models;
 using Demo.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace Demo.Controllers
 {
@@ -68,6 +70,22 @@ namespace Demo.Controllers
                 });
             }
             return BadRequest("Not found CustTypeCd!");
+        }
+
+        [HttpGet]
+        public IActionResult GetInfoCustomer(string name)
+        {
+            List<Customer> customerBussiness = this._customerService.GetInfoCustomerBussiness(name);
+            List<Customer> customerIndividual = this._customerService.GetInfoCustomerIndividual(name);
+            foreach (Customer customer in customerBussiness)
+            {
+                customerIndividual.Add(customer);
+            }
+            if(customerIndividual.Count == 0)
+            {
+                return NotFound("Not found with name "+ name);
+            }
+            return Ok(customerIndividual);
         }
     }
 }

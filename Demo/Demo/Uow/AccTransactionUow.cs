@@ -1,30 +1,18 @@
 ﻿using Demo.Models;
-using Demo.Repositories.IRepositories;
 using Demo.Repositories;
+using Demo.Repositories.IRepositories;
 using Demo.Uow.IUow;
+using Microsoft.EntityFrameworkCore;
 
 namespace Demo.Uow
 {
-    public class AccountUow : IAccountUow
+    public class AccTransactionUow : IAccTransactionUow
     {
         private readonly MyDbContext _context;
 
-        public AccountUow(MyDbContext context)
+        public AccTransactionUow(MyDbContext context)
         {
             this._context = context;
-        }
-
-        private IEmployeeRepository<Employee> employeeRepository;
-        public IEmployeeRepository<Employee> EmployeeRepository
-        {
-            get
-            {
-                if (employeeRepository == null)
-                {
-                    employeeRepository = new EmployeeRepository(_context);
-                }
-                return employeeRepository;
-            }
         }
 
         private IRepositoryInt<Branch> branchRepository;
@@ -40,19 +28,19 @@ namespace Demo.Uow
             }
         }
 
-        private IRepositoryString<Product> productRepository;
-        public IRepositoryString<Product> ProductRepository
+        private IEmployeeRepository<Employee> employeeRepository;
+        public IEmployeeRepository<Employee> EmployeeRepository
         {
             get
             {
-                if (productRepository == null)
+                if (employeeRepository == null)
                 {
-                    productRepository = new ProductRepository(_context);
+                    employeeRepository = new EmployeeRepository(_context);
                 }
-                return productRepository;
+                return employeeRepository;
             }
         }
-        
+
         private IRepositoryInt<Account> accountRepository;
         public IRepositoryInt<Account> AccountRepository
         {
@@ -66,16 +54,16 @@ namespace Demo.Uow
             }
         }
 
-        private ICustomerRepository<Customer> customerRepository;
-        public ICustomerRepository<Customer> CustomerRepository
+        private IRepositoryInt<AccTransaction> accTransactionRepository;
+        public IRepositoryInt<AccTransaction> AccTransactionRepository
         {
             get
             {
-                if (customerRepository == null)
+                if (accTransactionRepository == null)
                 {
-                    customerRepository = new CustomerRepository(_context);
+                    accTransactionRepository = new AccTransactionRepository(_context);
                 }
-                return customerRepository;
+                return accTransactionRepository;
             }
         }
 

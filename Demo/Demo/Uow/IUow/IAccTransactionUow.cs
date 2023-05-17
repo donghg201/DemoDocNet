@@ -3,13 +3,12 @@ using Demo.Repositories.IRepositories;
 
 namespace Demo.Uow.IUow
 {
-    public interface IAccountUow
+    public interface IAccTransactionUow
     {
-        ICustomerRepository<Customer> CustomerRepository { get; }
-        IRepositoryString<Product> ProductRepository { get; }
         IRepositoryInt<Branch> BranchRepository { get; }
         IEmployeeRepository<Employee> EmployeeRepository { get; }
         IRepositoryInt<Account> AccountRepository { get; }
+        IRepositoryInt<AccTransaction> AccTransactionRepository { get; }
 
         void SaveChanges();
     }

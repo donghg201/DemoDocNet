@@ -41,7 +41,7 @@ namespace Demo
             services.AddScoped<IBranchUow, BranchUow>();
             services.AddScoped<BranchService>();
 
-            services.AddScoped<IRepositoryInt<Customer>, CustomerRepository>();
+            services.AddScoped<ICustomerRepository<Customer>, CustomerRepository>();
             services.AddScoped<IBussinessRepository<Bussiness>, BussinessRepository>();
             services.AddScoped<IIndividualRepository<Individual>, IndividualRepository>();
             services.AddScoped<ICustomerUow, CustomerUow>();
@@ -63,9 +63,13 @@ namespace Demo
             services.AddScoped<IProductUow, ProductUow>();
             services.AddScoped<ProductService>();
 
-            services.AddScoped<IAccountRepository<Account>, AccountRepository>();
+            services.AddScoped<IRepositoryInt<Account>, AccountRepository>();
             services.AddScoped<IAccountUow, AccountUow>();
             services.AddScoped<AccountService>();
+
+            services.AddScoped<IRepositoryInt<AccTransaction>, AccTransactionRepository>();
+            services.AddScoped<IAccTransactionUow, AccTransactionUow>();
+            services.AddScoped<AccTransactionService>();
 
             services.AddSwaggerGen(c =>
             {
