@@ -29,6 +29,8 @@ namespace Demo.Models
 
         [Range(0, 10)]
         public int? AssignedBranchId { get; set; }
+        [ForeignKey("AssignedBranchId")]
+        public Branch Branch { get; set; }
 
         [Range(0, 10)]
         public int? DeptId { get; set; }

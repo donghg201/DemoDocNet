@@ -32,7 +32,10 @@ namespace Demo.Repositories
 
         public Customer FindById(int id)
         {
-            throw new System.NotImplementedException();
+            var customer = (from c in _context.Customers
+                             where c.CustId == id
+                             select c).FirstOrDefault();
+            return customer;
         }
 
         public void Update(Customer entity, int id)

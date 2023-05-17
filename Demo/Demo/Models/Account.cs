@@ -29,15 +29,20 @@ namespace Demo.Models
         [Range(0, 10)]
         public int? CustId { get; set; }
         [ForeignKey("CustId")]
-        public Employee Customer { get; set; }
+        public Customer Customer { get; set; }
 
         [Range(0, 10)]
         [Required]
         public int OpenBranchId { get; set;}
+        [ForeignKey("OpenBranchId")]
+        public Branch Branch { get; set; }
+
 
         [Range(0, 10)]
         [Required]
         public int OpenEmpId { get; set;}
+        [ForeignKey("OpenEmpId")]
+        public Employee Employee { get; set; }
 
         [StringLength(10)]
         [Required]
@@ -45,6 +50,6 @@ namespace Demo.Models
         [ForeignKey("ProductCd")]
         public Product Product { get; set; }
 
-        public List<AccTransaction> AccTransaction { get; set; }
+        public List<AccTransaction> AccTransaction { get; set; }    
     }
 }

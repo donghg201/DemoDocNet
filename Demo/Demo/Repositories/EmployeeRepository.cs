@@ -32,7 +32,10 @@ namespace Demo.Repositories
 
         public Employee FindById(int id)
         {
-            throw new System.NotImplementedException();
+            var employee = (from e in _context.Employees
+                            where e.EmpId == id
+                            select e).FirstOrDefault();
+            return employee;
         }
 
         public void Update(Employee entity, int id)
