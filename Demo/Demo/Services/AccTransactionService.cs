@@ -1,6 +1,7 @@
 ﻿using Demo.Dto;
 using Demo.Models;
 using Demo.Uow.IUow;
+using System.Collections.Generic;
 
 namespace Demo.Services
 {
@@ -51,6 +52,39 @@ namespace Demo.Services
         public Employee GetEmployeeById(int id)
         {
             return this._uow.EmployeeRepository.FindById(id);
+        }
+
+        public List<AccTransaction> GetAllAccTransaction()
+        {
+            return this._uow.AccTransactionRepository.FetchAll();
+        }
+
+        public AccTransaction GetAccTransactionById(int id)
+        {
+            return this._uow.AccTransactionRepository.FindById(id);
+        }
+
+        public void UpdateAccTransaction(AccTransactionDto accTransaction, int id)
+        {
+
+            AccTransaction _accTransaction = new()
+            {
+                Amount = accTransaction.Amount,
+                FundsAvailDate = accTransaction.FundsAvailDate,
+                TxnDate = accTransaction.TxnDate,
+                TxnTypeCd = accTransaction.TxnTypeCd,
+                AccountId = accTransaction.AccountId,
+                ExecutionBranchId = accTransaction.ExecutionBranchId,
+                TellerEmpId = accTransaction.TellerEmpId,
+            };
+            this._uow.AccTransactionRepository.Update(_accTransaction, id);
+            this._uow.SaveChanges();
+        }
+
+        public void RemoveAccTransaction(int id)
+        {
+            this._uow.AccTransactionRepository.Delete(id);
+            this._uow.SaveChanges();
         }
     }
 }

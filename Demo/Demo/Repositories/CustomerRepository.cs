@@ -24,12 +24,17 @@ namespace Demo.Repositories
 
         public void Delete(int id)
         {
-            throw new System.NotImplementedException();
+            var customer = (from c in _context.Customers
+                            where c.CustId == id
+                            select c).FirstOrDefault();
+            this._context.Customers.Remove(customer);
         }
 
         public List<Customer> FetchAll()
         {
-            throw new System.NotImplementedException();
+            var customers = (from c in _context.Customers
+                            select c).ToList();
+            return customers;
         }
 
         public Customer FindById(int id)
@@ -42,7 +47,15 @@ namespace Demo.Repositories
 
         public void Update(Customer entity, int id)
         {
-            throw new System.NotImplementedException();
+            var customer = (from c in _context.Customers
+                            where c.CustId == id
+                            select c).FirstOrDefault();
+            customer.Address = entity.Address;
+            customer.City = entity.City;
+            customer.PostalCode = entity.PostalCode;
+            customer.CustTypeCd = entity.CustTypeCd;
+            customer.FedId = entity.FedId;
+            customer.State = entity.State;
         }
         
         public List<Customer> GetInfoCustomerIndividual(string name)

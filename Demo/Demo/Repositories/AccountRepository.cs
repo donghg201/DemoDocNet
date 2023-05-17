@@ -22,12 +22,17 @@ namespace Demo.Repositories
 
         public void Delete(int id)
         {
-            throw new System.NotImplementedException();
+            var account = (from a in _context.Accounts
+                           where a.AccountId == id
+                           select a).FirstOrDefault();
+            this._context.Accounts.Remove(account);
         }
 
         public List<Account> FetchAll()
         {
-            throw new System.NotImplementedException();
+            var accounts = (from a in _context.Accounts
+                           select a).ToList();
+            return accounts;
         }
 
         public Account FindById(int id)
@@ -40,7 +45,19 @@ namespace Demo.Repositories
 
         public void Update(Account entity, int id)
         {
-            throw new System.NotImplementedException();
+            var account = (from a in _context.Accounts
+                           where a.AccountId == id
+                           select a).FirstOrDefault();
+            account.AvailBalance = entity.AvailBalance;
+            account.CloseDate = entity.CloseDate;
+            account.LastActivityDate = entity.LastActivityDate;
+            account.OpenDate = entity.OpenDate;
+            account.PendingBalance = entity.PendingBalance;
+            account.Status = entity.Status;
+            account.CustId = entity.CustId;
+            account.OpenBranchId = entity.OpenBranchId;
+            account.OpenEmpId = entity.OpenEmpId;
+            account.ProductCd = entity.ProductCd;
         }
     }
 }

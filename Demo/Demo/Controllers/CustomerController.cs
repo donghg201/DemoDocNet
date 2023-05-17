@@ -18,6 +18,18 @@ namespace Demo.Controllers
             _customerService = customerService;
         }
 
+        [HttpGet("/api/customer/all")]
+        public IActionResult GetAll()
+        {
+            return Ok(this._customerService.GetAllCustomer());
+        }
+
+        [HttpGet("{id}")]
+        public IActionResult GetCustomer(int id)
+        {
+            return Ok(this._customerService.GetCustomerById(id));
+        }
+
         [HttpPost]
         public IActionResult Add([FromBody] CustomerDto customer)
         {
@@ -85,7 +97,81 @@ namespace Demo.Controllers
             {
                 return NotFound("Not found with name "+ name);
             }
+            
             return Ok(customerIndividual);
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult Put(int id, [FromBody] CustomerDto customer)
+        {
+            if (customer == null)
+            {
+                return BadRequest("Not found input!");
+            }
+            if (this._customerService.GetCustomerById(id) == null)
+            {
+                return NotFound("Not found customer!");
+            }
+            else
+            {
+                if (string.Equals(customer.CustTypeCd, "B") == true)
+                {
+                    if (this._customerService.GetBussinessByStateId(customer.StateId) != null)
+                    {
+                        return BadRequest("Exist state id!");
+                    }
+                    this._customerService.AddCustomerBusiness(customer);
+                    return Ok(new CustomerDto()
+                    {
+                        Address = customer.Address,
+                        City = customer.City,
+                        CustTypeCd = customer.CustTypeCd,
+                        FedId = customer.FedId,
+                        PostalCode = customer.PostalCode,
+                        State = customer.State,
+                        StateId = customer.StateId,
+                        IncorpDate = customer.IncorpDate,
+                        Name = customer.Name
+                    });
+                }
+
+                if (string.Equals(customer.CustTypeCd, "I") == true)
+                {
+                    if (this._customerService.GetIndividualByFirstName(customer.FirstName) != null)
+                    {
+                        return BadRequest("Exist first name!");
+                    }
+                    this._customerService.AddCustomerIndividual(customer);
+                    return Ok(new CustomerDto()
+                    {
+                        Address = customer.Address,
+                        City = customer.City,
+                        CustTypeCd = customer.CustTypeCd,
+                        FedId = customer.FedId,
+                        PostalCode = customer.PostalCode,
+                        State = customer.State,
+                        BirthDate = customer.BirthDate,
+                        FirstName = customer.FirstName,
+                        LastName = customer.LastName,
+                    });
+                }
+            }
+            this._customerService.UpdateCustomer(customer, id);
+            return Ok("Edit successfully!");
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            if (this._customerService.GetCustomerById(id) == null)
+            {
+                return NotFound("Not found customer!");
+            }
+            else
+            {
+                this._customerService.RemoveCustomer(id);
+                return Ok("Delete successfully!");
+            }
         }
     }
 }

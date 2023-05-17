@@ -22,12 +22,17 @@ namespace Demo.Repositories
 
         public void Delete(int id)
         {
-            throw new System.NotImplementedException();
+            var employee = (from e in _context.Employees
+                          where e.EmpId == id
+                          select e).FirstOrDefault();
+            this._context.Employees.Remove(employee);
         }
 
         public List<Employee> FetchAll()
         {
-            throw new System.NotImplementedException();
+            var employees = (from e in _context.Employees
+                            select e).ToList();
+            return employees;
         }
 
         public Employee FindById(int id)
@@ -40,7 +45,17 @@ namespace Demo.Repositories
 
         public void Update(Employee entity, int id)
         {
-            throw new System.NotImplementedException();
+            var employee = (from e in _context.Employees
+                            where e.EmpId == id
+                            select e).FirstOrDefault();
+            employee.FirstName = entity.FirstName;
+            employee.LastName = entity.LastName;
+            employee.StartDate = entity.StartDate;
+            employee.EndDate = entity.EndDate;
+            employee.Title = entity.Title;
+            employee.AssignedBranchId  = entity.AssignedBranchId;
+            employee.DeptId = entity.DeptId;
+            employee.SuperiorEmpId = entity.SuperiorEmpId;
         }
 
         public Employee FindBySupId(int id)

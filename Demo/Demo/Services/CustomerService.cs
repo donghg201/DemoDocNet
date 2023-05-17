@@ -99,5 +99,36 @@ namespace Demo.Services
             return this._uow.CustomerRepository.GetInfoCustomerBussiness(name);
 
         }
+        public List<Customer> GetAllCustomer()
+        {
+            return this._uow.CustomerRepository.FetchAll();
+        }
+
+        public Customer GetCustomerById(int id)
+        {
+            return this._uow.CustomerRepository.FindById(id);
+        }
+
+        public void UpdateCustomer(CustomerDto customer, int id)
+        {
+
+            Customer _customer = new()
+            {
+                Address = customer.Address,
+                City = customer.City,
+                PostalCode = customer.PostalCode,
+                CustTypeCd = customer.CustTypeCd,
+                FedId = customer.FedId,
+                State = customer.State,
+        };
+            this._uow.CustomerRepository.Update(_customer, id);
+            this._uow.SaveChanges();
+        }
+
+        public void RemoveCustomer(int id)
+        {
+            this._uow.CustomerRepository.Delete(id);
+            this._uow.SaveChanges();
+        }
     }
 }

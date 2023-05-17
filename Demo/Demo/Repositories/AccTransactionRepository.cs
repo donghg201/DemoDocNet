@@ -22,12 +22,17 @@ namespace Demo.Repositories
 
         public void Delete(int id)
         {
-            throw new System.NotImplementedException();
+            var accTrans = (from a in _context.AccTransactions
+                            where a.TxnId == id
+                            select a).FirstOrDefault();
+            this._context.AccTransactions.Remove(accTrans);
         }
 
         public List<AccTransaction> FetchAll()
         {
-            throw new System.NotImplementedException();
+            var accTrans = (from a in _context.AccTransactions
+                            select a).ToList();
+            return accTrans;
         }
 
         public AccTransaction FindById(int id)
@@ -40,7 +45,16 @@ namespace Demo.Repositories
 
         public void Update(AccTransaction entity, int id)
         {
-            throw new System.NotImplementedException();
+            var accTrans = (from a in _context.AccTransactions
+                            where a.TxnId == id
+                            select a).FirstOrDefault();
+            accTrans.Amount = entity.Amount;
+            accTrans.FundsAvailDate = entity.FundsAvailDate;
+            accTrans.TxnDate = entity.TxnDate;
+            accTrans.TxnTypeCd = entity.TxnTypeCd;
+            accTrans.AccountId = entity.AccountId;
+            accTrans.ExecutionBranchId = entity.ExecutionBranchId;
+            accTrans.TellerEmpId = entity.TellerEmpId;
         }
     }
 }
