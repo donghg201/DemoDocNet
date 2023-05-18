@@ -1,4 +1,5 @@
 ﻿using Demo.Dto;
+using Demo.Models;
 using Demo.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -25,13 +26,25 @@ namespace Demo.Controllers
         [HttpGet("{id}")]
         public IActionResult GetEmployee(int id)
         {
+            if (id == null)
+            {
+                return BadRequest("Not found input!");
+            }
+            if (this._employeeService.GetEmployeeById(id) == null)
+            {
+                return NotFound("Not found employee with id = "+ id);
+            }
             return Ok(this._employeeService.GetEmployeeById(id));
         }
 
         [HttpPost]
         public IActionResult Add([FromBody] EmployeeDto employee)
         {
-            if(_employeeService.GetBranchById((int)employee.AssignedBranchId) == null)
+            if (employee == null)
+            {
+                return BadRequest("Not found input!");
+            }
+            if (_employeeService.GetBranchById((int)employee.AssignedBranchId) == null)
             {
                 return NotFound("Not found brand id!");
             }
@@ -44,12 +57,16 @@ namespace Demo.Controllers
                 return NotFound("Exist superior employee id!");
             }
             this._employeeService.AddEmployee(employee);
-            return Ok("Create successfully!");
+            return Ok(employee);
         }
 
         [HttpPut("{id}")]
-        public IActionResult Put(int id, [FromBody] EmployeeDto employee)
+        public IActionResult Put(int id, [FromBody] EmployeeAddDto employee)
         {
+            if (employee == null || id == null)
+            {
+                return BadRequest("Not found input!");
+            }
             if (this._employeeService.GetEmployeeById(id) == null)
             {
                 return NotFound("Not found employee!");
@@ -70,12 +87,16 @@ namespace Demo.Controllers
                 }
             }
             this._employeeService.UpdateEmployee(employee, id);
-            return Ok("Edit successfully!");
+            return Ok(employee);
         }
 
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
+            if (id == null)
+            {
+                return BadRequest("Not found input!");
+            }
             if (this._employeeService.GetEmployeeById(id) == null)
             {
                 return NotFound("Not found employee!");

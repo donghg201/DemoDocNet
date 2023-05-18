@@ -69,15 +69,18 @@ namespace Demo.Repositories
                                  Address = c.Address,
                                  City = c.City,
                                  CustTypeCd = c.CustTypeCd,
+                                 FedId = c.FedId,
+                                 State = c.State,
+                                 PostalCode = c.PostalCode,
                                  Individuals = new()
-                                 { 
-                                     new Individual
+                                 {
+                                     new Individual()
                                      {
-                                        FirstName = i.FirstName,
-                                        LastName = i.LastName,
-                                        BirthDate = i.BirthDate,
+                                         FirstName = i.FirstName,
+                                         LastName = i.LastName,
+                                         BirthDate = i.BirthDate,
                                      }
-                                 },
+                                 }
                              }).ToList();
             return customers;
         }
@@ -93,16 +96,64 @@ namespace Demo.Repositories
                                  Address = c.Address,
                                  City = c.City,
                                  CustTypeCd = c.CustTypeCd,
+                                 FedId = c.FedId,
+                                 State = c.State,
+                                 PostalCode = c.PostalCode,
                                  Bussiness = new()
                                  {
-                                     new Bussiness
+                                     new Bussiness()
                                      {
-                                        Name = b.Name,
-                                        IncorpDate = b.IncorpDate,
+                                         Name = b.Name,
+                                         StateId = b.StateId,
+                                         IncorpDate = b.IncorpDate,
                                      }
                                  }
                              }).ToList();
             return customers;
+        }
+
+        public List<Customer> GetAccTransaction(int id)
+        {
+            var customer = (from c in this._context.Customers
+                            join a in this._context.Accounts on c.CustId equals a.CustId
+                            join t in this._context.AccTransactions on a.AccountId equals t.AccountId
+                            where c.CustId == id
+                            select new Customer()
+                            {
+                                Address = c.Address,
+                                City = c.City,
+                                CustTypeCd = c.CustTypeCd,
+                                FedId = c.FedId,
+                                PostalCode = c.PostalCode,
+                                State = c.State,
+                                Accounts = new()
+                                {
+                                    new Account()
+                                    {
+                                        AccountId = a.AccountId,
+                                        AvailBalance = a.AvailBalance,
+                                        OpenDate = a.OpenDate,
+                                        CloseDate = a.CloseDate,
+                                        LastActivityDate = a.LastActivityDate,
+                                        PendingBalance = a.PendingBalance,
+                                        Status = a.Status,
+                                        AccTransaction = new()
+                                        {
+                                            new AccTransaction()
+                                            {
+                                                TxnId = t.TxnId,
+                                                Amount = t.Amount,
+                                                FundsAvailDate = t.FundsAvailDate,
+                                                TxnDate = t.TxnDate,
+                                                TxnTypeCd = t.TxnTypeCd
+                                            }
+                                        }
+
+                                    }
+                                }
+                            }
+                            ).ToList();
+            return customer;
         }
     }
 }

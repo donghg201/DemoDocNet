@@ -10,5 +10,6 @@ namespace Demo.Repositories.IRepositories
         void Update(T entity, string id);
         void Delete(string id);
         T GetBussinessByStateId(string id);
+        T FindCusBussinessById(int id);
     }
 }

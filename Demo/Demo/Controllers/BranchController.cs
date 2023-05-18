@@ -27,12 +27,24 @@ namespace Demo.Controllers
         [HttpGet("{id}")]
         public IActionResult GetBranch(int id)
         {
+            if (id == null)
+            {
+                return BadRequest("Not found input!");
+            }
+            if(this._branchService.GetBranchById(id) == null)
+            {
+                return NotFound("Not found branch with id = "+ id);
+            }
             return Ok(this._branchService.GetBranchById(id));
         }
 
         [HttpPost]
         public IActionResult Add([FromBody] BranchDto branch)
         {
+            if (branch == null)
+            {
+                return BadRequest("Not found input!");
+            }
             this._branchService.AddBranch(branch);
             return Ok(branch);
         }
@@ -40,21 +52,29 @@ namespace Demo.Controllers
         [HttpPut("{id}")]
         public IActionResult Put(int id, [FromBody] BranchDto branch)
         {
-            if(this._branchService.GetBranchById(id) == null)
+            if (branch == null || id == null)
+            {
+                return BadRequest("Not found input!");
+            }
+            if (this._branchService.GetBranchById(id) == null)
             {
                 return NotFound("Not found branch!");
             }
             else
             {
                 this._branchService.UpdateBranch(branch, id);
-                return Ok("Edit successfully!");
+                return Ok(branch);
             }
         }
 
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            if(this._branchService.GetBranchById(id) == null)
+            if (id == null)
+            {
+                return BadRequest("Not found input!");
+            }
+            if (this._branchService.GetBranchById(id) == null)
             {
                 return NotFound("Not found branch!");
             }

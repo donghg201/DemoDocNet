@@ -35,7 +35,12 @@ namespace Demo.Services
 
         public Branch GetBranchById(int id)
         {
-            return this._uow.BranchRepository.FindById(id);
+            var branch = this._uow.BranchRepository.FindById(id);
+            if(branch == null)
+            {
+                return null;
+            }
+            return branch;
         }
 
         public void UpdateBranch(BranchDto branch, int id)

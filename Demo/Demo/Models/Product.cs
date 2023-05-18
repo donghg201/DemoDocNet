@@ -25,7 +25,5 @@ namespace Demo.Models
         public string? ProductTypeCd { get; set; }
         [ForeignKey("ProductTypeCd")]
         public ProductType ProductType { get; set; }
-
-        public List<Account> Accounts { get; set; }
     }
 }

@@ -12,5 +12,10 @@ namespace Demo.Repositories.IRepositories
         void Delete(int id);
         List<T> GetInfoCustomerBussiness(string name);
         List<T> GetInfoCustomerIndividual(string name);
+
+        List<T> GetAccTransaction(int id);
+
+
+       
     }
 }

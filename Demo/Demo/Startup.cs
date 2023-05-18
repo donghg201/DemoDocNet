@@ -1,3 +1,4 @@
+using Demo.Dto;
 using Demo.Models;
 using Demo.Repositories;
 using Demo.Repositories.IRepositories;
@@ -71,10 +72,14 @@ namespace Demo
             services.AddScoped<IAccTransactionUow, AccTransactionUow>();
             services.AddScoped<AccTransactionService>();
 
+            services.AddScoped<ITaskRepository<CustomerTaskDto>, TaskRepository>();
+            services.AddScoped<ITaskUow, TaskUow>();
+            services.AddScoped<TaskService>();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Demo", Version = "v1" });
-                c.ResolveConflictingActions(apiDescriptions => apiDescriptions.First());
+                //c.ResolveConflictingActions(apiDescriptions => apiDescriptions.First());
             });
 
         }

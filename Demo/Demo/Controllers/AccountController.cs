@@ -3,6 +3,7 @@ using Demo.Models;
 using Demo.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Principal;
 
 namespace Demo.Controllers
 {
@@ -24,14 +25,26 @@ namespace Demo.Controllers
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetBranch(int id)
+        public IActionResult GetAccount(int id)
         {
+            if (id == null)
+            {
+                return BadRequest("Not found input!");
+            }
+            if(this._accountService.GetAccountById(id) == null)
+            {
+                return NotFound("Not found account with id = " + id);
+            }
             return Ok(this._accountService.GetAccountById(id));
         }
 
         [HttpPost]
         public IActionResult Add([FromBody] AccountDto account)
         {
+            if (account == null)
+            {
+                return BadRequest("Not found input!");
+            }
             if (_accountService.GetBranchById(account.OpenBranchId) == null)
             {
                 return NotFound("Not found brand id!");
@@ -49,12 +62,16 @@ namespace Demo.Controllers
                 return NotFound("Not found customer id!");
             }
             this._accountService.AddAccount(account);
-            return Ok("Create successfully!");
+            return Ok(account);
         }
 
         [HttpPut("{id}")]
         public IActionResult Put(int id, [FromBody] AccountDto account)
         {
+            if (account == null || id == null)
+            {
+                return BadRequest("Not found input!");
+            }
             if (this._accountService.GetAccountById(id) == null)
             {
                 return NotFound("Not found account!");
@@ -79,12 +96,16 @@ namespace Demo.Controllers
                 }
             }
                 this._accountService.UpdateAccount(account, id);
-                return Ok("Edit successfully!");
+                return Ok(account);
         }
 
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
+            if (id == null)
+            {
+                return BadRequest("Not found input!");
+            }
             if (this._accountService.GetAccountById(id) == null)
             {
                 return NotFound("Not found branch!");

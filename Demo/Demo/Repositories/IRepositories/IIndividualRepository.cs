@@ -10,5 +10,6 @@ namespace Demo.Repositories.IRepositories
         void Update(T entity, string id);
         void Delete(string id);
         T GetIndividualByFirstName(string name);
+        T FindCusIndividualById(int id);
     }
 }

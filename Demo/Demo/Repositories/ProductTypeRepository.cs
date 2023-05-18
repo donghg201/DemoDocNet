@@ -22,10 +22,6 @@ namespace Demo.Repositories
 
         public void Delete(string id)
         {
-            //var productType = (from p in _context.ProductTypes
-            //                  where p.ProductTypeCd == id
-            //                  select p).FirstOrDefault();
-
             var productType = (from p in _context.ProductTypes
                                where p.ProductTypeCd == id
                                select p).FirstOrDefault();
@@ -42,7 +38,7 @@ namespace Demo.Repositories
         public ProductType FindById(string id)
         {
             var productType = (from p in _context.ProductTypes
-                               where p.ProductTypeCd == id
+                               where p.ProductTypeCd.Equals(id)
                                select p).FirstOrDefault();
             return productType;
         }

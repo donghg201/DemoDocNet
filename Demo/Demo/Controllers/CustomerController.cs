@@ -27,6 +27,15 @@ namespace Demo.Controllers
         [HttpGet("{id}")]
         public IActionResult GetCustomer(int id)
         {
+            if (id == null)
+            {
+                return BadRequest("Not found input!");
+            }
+            if (this._customerService.GetCustomerById(id) == null)
+            {
+                return NotFound("Not found customer with id = " + id);
+            }
+            
             return Ok(this._customerService.GetCustomerById(id));
         }
 
@@ -51,12 +60,12 @@ namespace Demo.Controllers
                     Address = customer.Address,
                     City = customer.City,
                     CustTypeCd = customer.CustTypeCd,
-                    FedId = customer.FedId,
-                    PostalCode = customer.PostalCode,
-                    State = customer.State,
                     StateId = customer.StateId,
                     IncorpDate = customer.IncorpDate,
-                    Name = customer.Name
+                    Name = customer.Name,
+                    State = customer.StateId,
+                    PostalCode = customer.PostalCode,
+                    FedId = customer.FedId,
                 }) ;
             }
 
@@ -73,12 +82,12 @@ namespace Demo.Controllers
                     Address = customer.Address,
                     City = customer.City,
                     CustTypeCd = customer.CustTypeCd,
-                    FedId = customer.FedId,
-                    PostalCode = customer.PostalCode,
-                    State = customer.State,
                     BirthDate = customer.BirthDate,
                     FirstName = customer.FirstName,
                     LastName = customer.LastName,
+                    State = customer.StateId,
+                    PostalCode = customer.PostalCode,
+                    FedId = customer.FedId,
                 });
             }
             return BadRequest("Not found CustTypeCd!");
@@ -87,9 +96,13 @@ namespace Demo.Controllers
         [HttpGet]
         public IActionResult GetInfoCustomer(string name)
         {
-            List<Customer> customerBussiness = this._customerService.GetInfoCustomerBussiness(name);
-            List<Customer> customerIndividual = this._customerService.GetInfoCustomerIndividual(name);
-            foreach (Customer customer in customerBussiness)
+            if (name == "")
+            {
+                return BadRequest("Not found input!");
+            }
+            List<CustomerDto> customerBussiness = this._customerService.GetInfoCustomerBussiness(name);
+            List<CustomerDto> customerIndividual = this._customerService.GetInfoCustomerIndividual(name);
+            foreach (CustomerDto customer in customerBussiness)
             {
                 customerIndividual.Add(customer);
             }
@@ -104,7 +117,7 @@ namespace Demo.Controllers
         [HttpPut("{id}")]
         public IActionResult Put(int id, [FromBody] CustomerDto customer)
         {
-            if (customer == null)
+            if (customer == null || id == null)
             {
                 return BadRequest("Not found input!");
             }
@@ -126,9 +139,6 @@ namespace Demo.Controllers
                         Address = customer.Address,
                         City = customer.City,
                         CustTypeCd = customer.CustTypeCd,
-                        FedId = customer.FedId,
-                        PostalCode = customer.PostalCode,
-                        State = customer.State,
                         StateId = customer.StateId,
                         IncorpDate = customer.IncorpDate,
                         Name = customer.Name
@@ -147,9 +157,6 @@ namespace Demo.Controllers
                         Address = customer.Address,
                         City = customer.City,
                         CustTypeCd = customer.CustTypeCd,
-                        FedId = customer.FedId,
-                        PostalCode = customer.PostalCode,
-                        State = customer.State,
                         BirthDate = customer.BirthDate,
                         FirstName = customer.FirstName,
                         LastName = customer.LastName,
@@ -157,12 +164,16 @@ namespace Demo.Controllers
                 }
             }
             this._customerService.UpdateCustomer(customer, id);
-            return Ok("Edit successfully!");
+            return Ok(customer);
         }
 
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
+            if (id == null)
+            {
+                return BadRequest("Not found input!");
+            }
             if (this._customerService.GetCustomerById(id) == null)
             {
                 return NotFound("Not found customer!");

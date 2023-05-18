@@ -47,5 +47,14 @@ namespace Demo.Repositories
         {
             throw new System.NotImplementedException();
         }
+
+        public Bussiness FindCusBussinessById(int id)
+        {
+            var customer = (from c in _context.Customers
+                            join b in _context.Bussiness on c.CustId equals b.CustId
+                            where c.CustId == id
+                            select b).FirstOrDefault();
+            return customer;
+        }
     }
 }

@@ -1,11 +1,8 @@
-﻿using Demo.Models;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
-using System;
+﻿using System;
 
 namespace Demo.Dto
 {
-    public class EmployeeDto
+    public class EmployeeGetDto
     {
         public int EmpId { get; set; }
         public DateTime? EndDate { get; set; }
@@ -23,9 +20,5 @@ namespace Demo.Dto
         public int? DeptId { get; set; }
 
         public int? SuperiorEmpId { get; set; }
-
-        public BranchDto Branch { get; set; }
-
-        public DepartmentDto Department { get; set; }
     }
 }

@@ -13,6 +13,16 @@ namespace Demo.Repositories
         {
             this._context = context;
         }
+      
+
+        public Individual FindCusIndividualById(int id)
+        {
+            var customer = (from c in _context.Customers
+                            join i in _context.Individuals on c.CustId equals i.CustId
+                            where c.CustId == id
+                            select i).FirstOrDefault();
+            return customer;
+        }
 
         public Individual Add(Individual entity)
         {

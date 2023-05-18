@@ -33,6 +33,7 @@ namespace Demo.Services
 
         public Branch GetBranchById(int id)
         {
+
             return this._uow.BranchRepository.FindById(id);
         }
 
@@ -41,9 +42,44 @@ namespace Demo.Services
             return this._uow.DepartmentRepository.FindById(id);
         }
 
-        public Employee GetEmployeeById(int id)
+        public EmployeeDto GetEmployeeById(int id)
         {
-            return this._uow.EmployeeRepository.FindById(id);
+            var employee = this._uow.EmployeeRepository.FindById(id);
+            if(employee == null)
+            {
+                return null;
+            }
+            var branch = this._uow.BranchRepository.FindById((int)employee.AssignedBranchId);
+            var department = this._uow.DepartmentRepository.FindById((int)employee.DeptId);
+
+            EmployeeDto employeeDto = new EmployeeDto()
+            {
+                EmpId = employee.EmpId,
+                FirstName = employee.FirstName,
+                LastName = employee.LastName,
+                StartDate = employee.StartDate,
+                EndDate = employee.EndDate,
+                Title = employee.Title,
+                AssignedBranchId = employee.AssignedBranchId,
+                DeptId = employee.DeptId,
+                SuperiorEmpId = employee.SuperiorEmpId,
+                Branch = new BranchDto()
+                {
+                    BranchId = branch.BranchId,
+                    Address = branch.Address,
+                    Name = branch.Name,
+                    City = branch.City,
+                    ZipCode = branch.ZipCode,
+                    State = branch.State,
+                },
+                Department = new DepartmentDto()
+                {
+                    
+                    DeptId = department.DeptId,
+                    Name = department.Name,
+                }
+            };
+            return employeeDto;
         }
 
         public Employee GetEmployeeBySupId(int id)
@@ -51,12 +87,47 @@ namespace Demo.Services
             return this._uow.EmployeeRepository.FindBySupId(id);
         }
 
-        public List<Employee> GetAllEmployee()
+        public List<EmployeeDto> GetAllEmployee()
         {
-            return this._uow.EmployeeRepository.FetchAll();
+            List<EmployeeDto> result = new();
+            var employees = this._uow.EmployeeRepository.FetchAll();
+            foreach(var employee in employees)
+            {
+                var branch = this._uow.BranchRepository.FindById((int)employee.AssignedBranchId);
+                var department = this._uow.DepartmentRepository.FindById((int)employee.DeptId);
+                var employeeDto = new EmployeeDto()
+                {
+                    EmpId = employee.EmpId,
+                    FirstName = employee.FirstName,
+                    LastName = employee.LastName,
+                    StartDate = employee.StartDate,
+                    EndDate = employee.EndDate,
+                    Title = employee.Title,
+                    AssignedBranchId = employee.AssignedBranchId,
+                    DeptId = employee.DeptId,
+                    SuperiorEmpId = employee.SuperiorEmpId,
+                    Branch = new BranchDto()
+                    {
+                        BranchId = branch.BranchId,
+                        Address = branch.Address,
+                        Name = branch.Name,
+                        City = branch.City,
+                        ZipCode = branch.ZipCode,
+                        State = branch.State,
+                    },
+                    Department = new DepartmentDto()
+                    {
+
+                        DeptId = department.DeptId,
+                        Name = department.Name,
+                    }
+                };
+                result.Add(employeeDto);
+            }
+            return result;
         }
 
-        public void UpdateEmployee(EmployeeDto employee, int id)
+        public void UpdateEmployee(EmployeeAddDto employee, int id)
         {
             Employee _employee = new()
             {

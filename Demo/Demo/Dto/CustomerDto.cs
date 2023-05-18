@@ -5,6 +5,7 @@ namespace Demo.Dto
 {
     public class CustomerDto
     {
+        //public int CustId { get; set; }
         public string? Address { get; set; }
 
         public string? City { get; set; }

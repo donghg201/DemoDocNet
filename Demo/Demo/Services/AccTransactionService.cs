@@ -26,6 +26,9 @@ namespace Demo.Services
                 ExecutionBranchId = accTransaction.ExecutionBranchId,
                 TellerEmpId = accTransaction.TellerEmpId,
             };
+            var account = this._uow.AccountRepository.FindById((int)accTransaction.AccountId);
+            account.AvailBalance = account.AvailBalance - accTransaction.Amount;
+            
             this._uow.AccTransactionRepository.Add(_accTransaction);
             this._uow.SaveChanges();
         }
@@ -54,14 +57,87 @@ namespace Demo.Services
             return this._uow.EmployeeRepository.FindById(id);
         }
 
-        public List<AccTransaction> GetAllAccTransaction()
+        public List<AccTransactionGetDto> GetAllAccTransaction()
         {
-            return this._uow.AccTransactionRepository.FetchAll();
+            List<AccTransactionGetDto> result = new();
+            var accTrans = this._uow.AccTransactionRepository.FetchAll();
+            foreach (var accTran in accTrans)
+            {
+                var branch = this._uow.BranchRepository.FindById((int)accTran.ExecutionBranchId);
+                var employee = this._uow.EmployeeRepository.FindById((int)accTran.TellerEmpId);
+                var accTransactionGetDto = new AccTransactionGetDto()
+                {
+                    TxnId = accTran.TxnId,
+                    Amount = accTran.Amount,
+                    FundsAvailDate = accTran.FundsAvailDate,
+                    TxnDate = accTran.TxnDate,
+                    TxnTypeCd = accTran.TxnTypeCd,
+                    Branch = new BranchDto()
+                    {
+                        BranchId = branch.BranchId,
+                        Name = branch.Name,
+                        Address = branch.Address,
+                        City = branch.City,
+                        ZipCode = branch.ZipCode,
+                        State = branch.State,
+                    },
+                    Employee = new EmployeeGetDto()
+                    {
+                        EmpId = employee.EmpId,
+                        FirstName = employee.FirstName,
+                        LastName = employee.LastName,
+                        StartDate = employee.StartDate,
+                        EndDate = employee.EndDate,
+                        Title = employee.Title,
+                        AssignedBranchId = employee.AssignedBranchId,
+                        DeptId = employee.DeptId,
+                        SuperiorEmpId = employee.SuperiorEmpId
+                    }
+                };
+                result.Add(accTransactionGetDto);
+            }
+            return result;
         }
 
-        public AccTransaction GetAccTransactionById(int id)
+        public AccTransactionGetDto GetAccTransactionById(int id)
         {
-            return this._uow.AccTransactionRepository.FindById(id);
+            var accTran = this._uow.AccTransactionRepository.FindById(id);
+            if(accTran == null)
+            {
+                return null;
+            }
+            var branch = this._uow.BranchRepository.FindById((int)accTran.ExecutionBranchId);
+            var employee = this._uow.EmployeeRepository.FindById((int)accTran.TellerEmpId);
+            var accTransactionGetDto = new AccTransactionGetDto()
+            {
+                TxnId = accTran.TxnId,
+                Amount = accTran.Amount,
+                FundsAvailDate = accTran.FundsAvailDate,
+                TxnDate = accTran.TxnDate,
+                TxnTypeCd = accTran.TxnTypeCd,
+                Branch = new BranchDto()
+                {
+                    BranchId = branch.BranchId,
+                    Name = branch.Name,
+                    Address = branch.Address,
+                    City = branch.City,
+                    ZipCode = branch.ZipCode,
+                    State = branch.State,
+                },
+                Employee = new EmployeeGetDto()
+                {
+                    EmpId = employee.EmpId,
+                    FirstName = employee.FirstName,
+                    LastName = employee.LastName,
+                    StartDate = employee.StartDate,
+                    EndDate = employee.EndDate,
+                    Title = employee.Title,
+                    AssignedBranchId = employee.AssignedBranchId,
+                    DeptId = employee.DeptId,
+                    SuperiorEmpId = employee.SuperiorEmpId
+                }
+            };
+            return accTransactionGetDto;
         }
 
         public void UpdateAccTransaction(AccTransactionDto accTransaction, int id)

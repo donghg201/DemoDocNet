@@ -31,6 +31,7 @@ namespace Demo.Models
         [StringLength(20)]
         public string? State { get; set; }
 
+        public List<Account> Accounts { get; set; }
         public List<Bussiness> Bussiness { get; set; }
         public List<Individual> Individuals { get; set; }
     }

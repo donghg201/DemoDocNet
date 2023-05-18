@@ -31,7 +31,12 @@ namespace Demo.Services
 
         public Department GetDepartmentById(int id)
         {
-            return this._uow.DepartmentRepository.FindById(id);
+            var department = this._uow.DepartmentRepository.FindById(id);
+            if(department == null)
+            {
+                return null;
+            }
+            return department;
         }
 
         public void UpdateDepartment(DepartmentDto department, int id)

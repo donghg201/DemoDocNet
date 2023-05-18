@@ -32,7 +32,12 @@ namespace Demo.Services
 
         public ProductType GetProductTypeById(string id)
         {
-            return this._uow.ProductTypeRepository.FindById(id);
+            var productType = this._uow.ProductTypeRepository.FindById(id);
+            if (productType == null)
+            {
+                return null;
+            }
+            return productType;
         }
 
         public void UpdateProductType(ProductTypeDto productType, string id)

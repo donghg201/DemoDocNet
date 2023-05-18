@@ -28,14 +28,42 @@ namespace Demo.Services
             this._uow.SaveChanges();
         }
 
-        public List<Product> GetAllProduct()
+        public List<ProductDto> GetAllProduct()
         {
-            return this._uow.ProductRepository.FetchAll();
+            List<ProductDto> result = new();
+            var productList = this._uow.ProductRepository.FetchAll();
+            foreach(Product product in productList)
+            {
+                ProductDto productDto = new()
+                {
+                    Name = product.Name,
+                    ProductCd = product.ProductCd,
+                    DateOffered = product.DateOffered,
+                    DateRetired = product.DateRetired,
+                    ProductTypeCd = product.ProductTypeCd,
+                };
+                result.Add(productDto);
+            }
+
+            return result;
         }
 
-        public Product GetProductById(string id)
+        public ProductDto GetProductById(string id)
         {
-            return this._uow.ProductRepository.FindById(id);
+            var product =  this._uow.ProductRepository.FindById(id);
+            if(product == null)
+            {
+                return null;
+            }
+            ProductDto productDto = new()
+            {
+                Name = product.Name,
+                ProductCd = product.ProductCd,
+                DateOffered = product.DateOffered,
+                DateRetired = product.DateRetired,
+                ProductTypeCd = product.ProductTypeCd,
+            };
+            return productDto;
         }
 
         public void UpdateProduct(ProductDto product, string id)

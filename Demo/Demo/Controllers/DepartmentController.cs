@@ -1,4 +1,5 @@
 ﻿using Demo.Dto;
+using Demo.Models;
 using Demo.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -25,19 +26,35 @@ namespace Demo.Controllers
         [HttpGet("{id}")]
         public IActionResult GetDepartment(int id)
         {
+            if (id == null)
+            {
+                return BadRequest("Not found input!");
+            }
+            if(this._departmentService.GetDepartmentById(id) == null)
+            {
+                return NotFound("Not found department with id = " + id);
+            }
             return Ok(this._departmentService.GetDepartmentById(id));
         }
 
         [HttpPost]
         public IActionResult Add([FromBody] DepartmentDto department)
         {
+            if (department == null)
+            {
+                return BadRequest("Not found input!");
+            }
             this._departmentService.AddDepartment(department);
-            return Ok("Create successfully!");
+            return Ok(department);
         }
 
         [HttpPut("{id}")]
         public IActionResult Put(int id, [FromBody] DepartmentDto department)
         {
+            if (department == null || id == null)
+            {
+                return BadRequest("Not found input!");
+            }
             if (this._departmentService.GetDepartmentById(id) == null)
             {
                 return NotFound("Not found department!");
@@ -45,13 +62,17 @@ namespace Demo.Controllers
             else
             {
                 this._departmentService.UpdateDepartment(department, id);
-                return Ok("Edit successfully!");
+                return Ok(department);
             }
         }
 
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
+            if (id == null)
+            {
+                return BadRequest("Not found input!");
+            }
             if (this._departmentService.GetDepartmentById(id) == null)
             {
                 return NotFound("Not found department!");
