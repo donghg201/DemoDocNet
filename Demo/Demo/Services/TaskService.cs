@@ -14,9 +14,9 @@ namespace Demo.Services
             this._uow = uow;
         }
 
-        public List<CustomerTaskDto> GetListCustomerAccount(int id)
+        public CustomerTaskDto GetListCustomerAccount(int id)
         {
-            return this._uow.TaskRepository.GetListCustomerById(id);
+            return this._uow.TaskRepository.GetCustomerById(id);
         }
     }
 }

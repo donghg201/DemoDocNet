@@ -28,6 +28,11 @@ namespace Demo.Dto
 
         public string? Status { get; set; }
 
-        public List<AccTransactionTaskDto> AccTransaction { get; set; }
+        public List<AccTransactionTaskDto> AccTransactionList { get; set; }
+
+        public AccountTaskDto() 
+        {
+            AccTransactionList = new List<AccTransactionTaskDto>();
+        }
     }
 }

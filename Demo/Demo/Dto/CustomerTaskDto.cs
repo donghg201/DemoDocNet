@@ -22,6 +22,11 @@ namespace Demo.Dto
 
         public string? State { get; set; }
 
-        public List<AccountTaskDto> Accounts { get; set; }
+        public List<AccountTaskDto> AccountList { get; set; }
+
+        public CustomerTaskDto() 
+        {
+            AccountList = new List<AccountTaskDto>();
+        }
     }
 }

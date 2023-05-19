@@ -5,6 +5,6 @@ namespace Demo.Repositories.IRepositories
 {
     public interface ITaskRepository<T> where T : class
     {
-        List<T> GetListCustomerById(int id);
+        T GetCustomerById(int id);
     }
 }
