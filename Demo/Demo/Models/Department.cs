@@ -6,7 +6,6 @@ namespace Demo.Models
     public class Department
     {
         [Key]
-        [Range(0, 10)]
         [Required]
         public int DeptId { get; set; }
 

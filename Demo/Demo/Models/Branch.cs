@@ -6,8 +6,6 @@ namespace Demo.Models
     {
         [Key]
         [Required]
-        [Range(0, 10)]
-        //"^[0-9]{1,10}$" -- regex 10 ký tự số
         public int BranchId { get; set; }
 
         [StringLength(30)]

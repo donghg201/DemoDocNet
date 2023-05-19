@@ -17,7 +17,6 @@ namespace Demo.Models
         [Required]
         public string LastName { get; set; }
 
-        [Range(0, 10)]
         [Required]
         public int CustId { get; set; }
         [ForeignKey("CustId")]

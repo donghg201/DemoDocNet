@@ -8,7 +8,6 @@ namespace Demo.Models
     public class Account
     {
         [Key]
-        [Range(0, 10)]
         [Required]
         public int AccountId { get; set; }
 
@@ -26,19 +25,15 @@ namespace Demo.Models
         [StringLength(30)]
         public string? Status { get; set; }
 
-        [Range(0, 10)]
         public int? CustId { get; set; }
         [ForeignKey("CustId")]
         public Customer Customer { get; set; }
 
-        [Range(0, 10)]
         [Required]
         public int OpenBranchId { get; set;}
         [ForeignKey("OpenBranchId")]
         public Branch Branch { get; set; }
 
-
-        [Range(0, 10)]
         [Required]
         public int OpenEmpId { get; set;}
         [ForeignKey("OpenEmpId")]

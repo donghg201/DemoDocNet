@@ -7,7 +7,6 @@ namespace Demo.Models
     public class Customer
     {
         [Key]
-        [Range(0, 10)]
         [Required]
         public int CustId { get; set; }
 

@@ -7,7 +7,6 @@ namespace Demo.Models
     public class Employee
     {
         [Key]
-        [Range(0, 10)]
         [Required]
         public int EmpId { get; set; }
 
@@ -27,17 +26,14 @@ namespace Demo.Models
         [StringLength(20)]
         public string? Title { get; set; }
 
-        [Range(0, 10)]
         public int? AssignedBranchId { get; set; }
         [ForeignKey("AssignedBranchId")]
         public Branch Branch { get; set; }
 
-        [Range(0, 10)]
         public int? DeptId { get; set; }
         [ForeignKey("DeptId")]
         public Department Department { get; set; }
 
-        [Range(0, 10)]
         public int? SuperiorEmpId { get; set; }
     }
 }
