@@ -3,6 +3,7 @@ using Demo.Models;
 using Demo.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 
 namespace Demo.Controllers
@@ -21,68 +22,104 @@ namespace Demo.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            return Ok(this._branchService.GetAllBranch());
+            try
+            {
+                return Ok(this._branchService.GetAllBranch());
+            }catch(Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         [HttpGet("{id}")]
         public IActionResult GetBranch(int id)
         {
-            if (id == null)
+            try
             {
-                return BadRequest("Not found input!");
+                if (id == 0)
+                {
+                    return BadRequest("Not found input!");
+                }
+                if (this._branchService.GetBranchById(id) == null)
+                {
+                    return NotFound("Not found branch with id = " + id);
+                }
+                return Ok(this._branchService.GetBranchById(id));
             }
-            if(this._branchService.GetBranchById(id) == null)
+            catch (Exception e)
             {
-                return NotFound("Not found branch with id = "+ id);
+                return BadRequest(e.Message);
             }
-            return Ok(this._branchService.GetBranchById(id));
         }
 
         [HttpPost]
         public IActionResult Add([FromBody] BranchDto branch)
         {
-            if (branch == null)
+            try
             {
-                return BadRequest("Not found input!");
+                if (branch == null)
+                {
+                    return BadRequest("Not found input!");
+                }
+                this._branchService.AddBranch(branch);
+                return Ok(branch);
             }
-            this._branchService.AddBranch(branch);
-            return Ok(branch);
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         [HttpPut("{id}")]
         public IActionResult Put(int id, [FromBody] BranchDto branch)
         {
-            if (branch == null || id == null)
+            try
             {
-                return BadRequest("Not found input!");
+                if (branch == null || id == 0)
+                {
+                    return BadRequest("Not found input!");
+                }
+                if (this._branchService.GetBranchById(id) == null)
+                {
+                    return NotFound("Not found branch!");
+                }
+                else
+                {
+                    this._branchService.UpdateBranch(branch, id);
+                    return Ok(branch);
+                }
             }
-            if (this._branchService.GetBranchById(id) == null)
+            catch (Exception e)
             {
-                return NotFound("Not found branch!");
+                return BadRequest(e.Message);
             }
-            else
-            {
-                this._branchService.UpdateBranch(branch, id);
-                return Ok(branch);
-            }
+            
         }
 
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            if (id == null)
+            try
             {
-                return BadRequest("Not found input!");
+                if (id == 0)
+                {
+                    return BadRequest("Not found input!");
+                }
+                if (this._branchService.GetBranchById(id) == null)
+                {
+                    return NotFound("Not found branch!");
+                }
+                else
+                {
+                    this._branchService.RemoveBranch(id);
+                    return Ok("Delete successfully!");
+                }
             }
-            if (this._branchService.GetBranchById(id) == null)
+            catch (Exception e)
             {
-                return NotFound("Not found branch!");
+                return BadRequest(e.Message);
             }
-            else
-            {
-                this._branchService.RemoveBranch(id);
-                return Ok("Delete successfully!");
-            }
+            
         }
 
     }

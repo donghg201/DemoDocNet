@@ -3,6 +3,7 @@ using Demo.Models;
 using Demo.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace Demo.Controllers
 {
@@ -20,67 +21,102 @@ namespace Demo.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            return Ok(this._departmentService.GetAllDepartment());
+            try
+            {
+                return Ok(this._departmentService.GetAllDepartment());
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         [HttpGet("{id}")]
         public IActionResult GetDepartment(int id)
         {
-            if (id == null)
+            try
             {
-                return BadRequest("Not found input!");
+                if (id == 0)
+                {
+                    return BadRequest("Not found input!");
+                }
+                if (this._departmentService.GetDepartmentById(id) == null)
+                {
+                    return NotFound("Not found department with id = " + id);
+                }
+                return Ok(this._departmentService.GetDepartmentById(id));
             }
-            if(this._departmentService.GetDepartmentById(id) == null)
+            catch (Exception e)
             {
-                return NotFound("Not found department with id = " + id);
+                return BadRequest(e.Message);
             }
-            return Ok(this._departmentService.GetDepartmentById(id));
         }
 
         [HttpPost]
         public IActionResult Add([FromBody] DepartmentDto department)
         {
-            if (department == null)
+            try
             {
-                return BadRequest("Not found input!");
+                if (department == null)
+                {
+                    return BadRequest("Not found input!");
+                }
+                this._departmentService.AddDepartment(department);
+                return Ok(department);
             }
-            this._departmentService.AddDepartment(department);
-            return Ok(department);
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         [HttpPut("{id}")]
         public IActionResult Put(int id, [FromBody] DepartmentDto department)
         {
-            if (department == null || id == null)
+            try
             {
-                return BadRequest("Not found input!");
+                if (department == null || id == 0)
+                {
+                    return BadRequest("Not found input!");
+                }
+                if (this._departmentService.GetDepartmentById(id) == null)
+                {
+                    return NotFound("Not found department!");
+                }
+                else
+                {
+                    this._departmentService.UpdateDepartment(department, id);
+                    return Ok(department);
+                }
             }
-            if (this._departmentService.GetDepartmentById(id) == null)
+            catch (Exception e)
             {
-                return NotFound("Not found department!");
-            }
-            else
-            {
-                this._departmentService.UpdateDepartment(department, id);
-                return Ok(department);
+                return BadRequest(e.Message);
             }
         }
 
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            if (id == null)
+            try
             {
-                return BadRequest("Not found input!");
+                if (id == 0)
+                {
+                    return BadRequest("Not found input!");
+                }
+                if (this._departmentService.GetDepartmentById(id) == null)
+                {
+                    return NotFound("Not found department!");
+                }
+                else
+                {
+                    this._departmentService.RemoveDepartment(id);
+                    return Ok("Delete successfully!");
+                }
             }
-            if (this._departmentService.GetDepartmentById(id) == null)
+            catch (Exception e)
             {
-                return NotFound("Not found department!");
-            }
-            else
-            {
-                this._departmentService.RemoveDepartment(id);
-                return Ok("Delete successfully!");
+                return BadRequest(e.Message);
             }
         }
     }

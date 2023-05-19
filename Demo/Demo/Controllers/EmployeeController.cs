@@ -3,6 +3,7 @@ using Demo.Models;
 using Demo.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace Demo.Controllers
 {
@@ -20,59 +21,46 @@ namespace Demo.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            return Ok(this._employeeService.GetAllEmployee());
+            try
+            {
+                return Ok(this._employeeService.GetAllEmployee());
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         [HttpGet("{id}")]
         public IActionResult GetEmployee(int id)
         {
-            if (id == null)
+            try
             {
-                return BadRequest("Not found input!");
+                if (id == 0)
+                {
+                    return BadRequest("Not found input!");
+                }
+                if (this._employeeService.GetEmployeeById(id) == null)
+                {
+                    return NotFound("Not found employee with id = " + id);
+                }
+                return Ok(this._employeeService.GetEmployeeById(id));
             }
-            if (this._employeeService.GetEmployeeById(id) == null)
+            catch (Exception e)
             {
-                return NotFound("Not found employee with id = "+ id);
+                return BadRequest(e.Message);
             }
-            return Ok(this._employeeService.GetEmployeeById(id));
         }
 
         [HttpPost]
         public IActionResult Add([FromBody] EmployeeDto employee)
         {
-            if (employee == null)
+            try
             {
-                return BadRequest("Not found input!");
-            }
-            if (_employeeService.GetBranchById((int)employee.AssignedBranchId) == null)
-            {
-                return NotFound("Not found brand id!");
-            }
-            if(_employeeService.GetDepartmentById((int)employee.DeptId) == null)
-            {
-                return NotFound("Not found department id!");
-            }
-            if(_employeeService.GetEmployeeBySupId((int)employee.SuperiorEmpId) != null)
-            {
-                return NotFound("Exist superior employee id!");
-            }
-            this._employeeService.AddEmployee(employee);
-            return Ok(employee);
-        }
-
-        [HttpPut("{id}")]
-        public IActionResult Put(int id, [FromBody] EmployeeAddDto employee)
-        {
-            if (employee == null || id == null)
-            {
-                return BadRequest("Not found input!");
-            }
-            if (this._employeeService.GetEmployeeById(id) == null)
-            {
-                return NotFound("Not found employee!");
-            }
-            else
-            {
+                if (employee == null)
+                {
+                    return BadRequest("Not found input!");
+                }
                 if (_employeeService.GetBranchById((int)employee.AssignedBranchId) == null)
                 {
                     return NotFound("Not found brand id!");
@@ -85,26 +73,74 @@ namespace Demo.Controllers
                 {
                     return NotFound("Exist superior employee id!");
                 }
+                this._employeeService.AddEmployee(employee);
+                return Ok(employee);
             }
-            this._employeeService.UpdateEmployee(employee, id);
-            return Ok(employee);
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult Put(int id, [FromBody] EmployeeAddDto employee)
+        {
+            try
+            {
+                if (employee == null || id == 0)
+                {
+                    return BadRequest("Not found input!");
+                }
+                if (this._employeeService.GetEmployeeById(id) == null)
+                {
+                    return NotFound("Not found employee!");
+                }
+                else
+                {
+                    if (_employeeService.GetBranchById((int)employee.AssignedBranchId) == null)
+                    {
+                        return NotFound("Not found brand id!");
+                    }
+                    if (_employeeService.GetDepartmentById((int)employee.DeptId) == null)
+                    {
+                        return NotFound("Not found department id!");
+                    }
+                    if (_employeeService.GetEmployeeBySupId((int)employee.SuperiorEmpId) != null)
+                    {
+                        return NotFound("Exist superior employee id!");
+                    }
+                }
+                this._employeeService.UpdateEmployee(employee, id);
+                return Ok(employee);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            if (id == null)
+            try
             {
-                return BadRequest("Not found input!");
+                if (id == 0)
+                {
+                    return BadRequest("Not found input!");
+                }
+                if (this._employeeService.GetEmployeeById(id) == null)
+                {
+                    return NotFound("Not found employee!");
+                }
+                else
+                {
+                    this._employeeService.RemoveEmployee(id);
+                    return Ok("Delete successfully!");
+                }
             }
-            if (this._employeeService.GetEmployeeById(id) == null)
+            catch (Exception e)
             {
-                return NotFound("Not found employee!");
-            }
-            else
-            {
-                this._employeeService.RemoveEmployee(id);
-                return Ok("Delete successfully!");
+                return BadRequest(e.Message);
             }
         }
     }

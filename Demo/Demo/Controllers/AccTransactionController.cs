@@ -3,6 +3,7 @@ using Demo.Models;
 using Demo.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace Demo.Controllers
 {
@@ -20,63 +21,46 @@ namespace Demo.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            return Ok(this._accTransactionService.GetAllAccTransaction());
+            try
+            {
+                return Ok(this._accTransactionService.GetAllAccTransaction());
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         [HttpGet("{id}")]
         public IActionResult GetAccTransaction(int id)
         {
-            if (id == null)
+            try
             {
-                return BadRequest("Not found input!");
-            }
-            if(this._accTransactionService.GetAccTransactionById(id) == null)
+                if (id == 0)
+                {
+                    return BadRequest("Not found input!");
+                }
+                if (this._accTransactionService.GetAccTransactionById(id) == null)
+                {
+                    return NotFound("Not found acc transaction with id = " + id);
+                }
+                return Ok(this._accTransactionService.GetAccTransactionById(id));
+            }catch (Exception e)
             {
-                return NotFound("Not found acc transaction with id = "+ id);
+                return BadRequest(e.Message);
             }
-            return Ok(this._accTransactionService.GetAccTransactionById(id));
+            
         }
 
         [HttpPost]
         public IActionResult Add([FromBody] AccTransactionDto accTransaction)
         {
-            if (accTransaction == null)
+            try
             {
-                return BadRequest("Not found input!");
-            }
-            if (_accTransactionService.GetBranchById((int)accTransaction.ExecutionBranchId) == null)
-            {
-                return NotFound("Not found brand id!");
-            }
-            if (_accTransactionService.GetEmployeeById((int)accTransaction.TellerEmpId) == null)
-            {
-                return NotFound("Not found employee id!");
-            }
-            if (_accTransactionService.GetAccountById((int)accTransaction.AccountId) == null)
-            {
-                return NotFound("Not found account id!");
-            }
-            if(!_accTransactionService.CompareAmountWithAvail(accTransaction.Amount, (int)accTransaction.AccountId))
-            {
-                return BadRequest("Available must be equals to or greater than amount!");
-            }
-            this._accTransactionService.AddAccTransaction(accTransaction);
-            return Ok(accTransaction);
-        }
-
-        [HttpPut("{id}")]
-        public IActionResult Put(int id, [FromBody] AccTransactionDto accTransaction)
-        {
-            if (accTransaction == null || id == null)
-            {
-                return BadRequest("Not found input!");
-            }
-            if (this._accTransactionService.GetAccTransactionById(id) == null)
-            {
-                return NotFound("Not found account transaction!");
-            }
-            else
-            {
+                if (accTransaction == null)
+                {
+                    return BadRequest("Not found input!");
+                }
                 if (_accTransactionService.GetBranchById((int)accTransaction.ExecutionBranchId) == null)
                 {
                     return NotFound("Not found brand id!");
@@ -93,27 +77,79 @@ namespace Demo.Controllers
                 {
                     return BadRequest("Available must be equals to or greater than amount!");
                 }
+                this._accTransactionService.AddAccTransaction(accTransaction);
+                return Ok(accTransaction);
+            }catch (Exception e)
+            {
+                return BadRequest(e.Message);
             }
-            this._accTransactionService.UpdateAccTransaction(accTransaction, id);
-            return Ok(accTransaction);
+            
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult Put(int id, [FromBody] AccTransactionDto accTransaction)
+        {
+            try
+            {
+                if (accTransaction == null || id == 0)
+                {
+                    return BadRequest("Not found input!");
+                }
+                if (this._accTransactionService.GetAccTransactionById(id) == null)
+                {
+                    return NotFound("Not found account transaction!");
+                }
+                else
+                {
+                    if (_accTransactionService.GetBranchById((int)accTransaction.ExecutionBranchId) == null)
+                    {
+                        return NotFound("Not found brand id!");
+                    }
+                    if (_accTransactionService.GetEmployeeById((int)accTransaction.TellerEmpId) == null)
+                    {
+                        return NotFound("Not found employee id!");
+                    }
+                    if (_accTransactionService.GetAccountById((int)accTransaction.AccountId) == null)
+                    {
+                        return NotFound("Not found account id!");
+                    }
+                    if (!_accTransactionService.CompareAmountWithAvail(accTransaction.Amount, (int)accTransaction.AccountId))
+                    {
+                        return BadRequest("Available must be equals to or greater than amount!");
+                    }
+                }
+                this._accTransactionService.UpdateAccTransaction(accTransaction, id);
+                return Ok(accTransaction);
+            }catch (Exception e) 
+            {
+                return BadRequest(e.Message);
+            }
+            
         }
 
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            if (id == null)
+            try
             {
-                return BadRequest("Not found input!");
-            }
-            if (this._accTransactionService.GetAccTransactionById(id) == null)
+                if (id == 0)
+                {
+                    return BadRequest("Not found input!");
+                }
+                if (this._accTransactionService.GetAccTransactionById(id) == null)
+                {
+                    return NotFound("Not found account transaction!");
+                }
+                else
+                {
+                    this._accTransactionService.RemoveAccTransaction(id);
+                    return Ok("Delete successfully!");
+                }
+            }catch(Exception e)
             {
-                return NotFound("Not found account transaction!");
+                return BadRequest(e.Message);
             }
-            else
-            {
-                this._accTransactionService.RemoveAccTransaction(id);
-                return Ok("Delete successfully!");
-            }
+            
         }
     }
 }

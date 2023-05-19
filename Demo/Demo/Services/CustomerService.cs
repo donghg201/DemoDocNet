@@ -9,6 +9,8 @@ namespace Demo.Services
     public class CustomerService
     {
         private readonly ICustomerUow _uow;
+        private string i = "Individual";
+        private string b = "Bussiness";
 
         public CustomerService(ICustomerUow uow)
         {
@@ -21,7 +23,7 @@ namespace Demo.Services
             {
                 Address = customer.Address,
                 City = customer.City,
-                CustTypeCd = customer.CustTypeCd.Equals("I") ? "Individual" : "Bussiness",
+                CustTypeCd = customer.CustTypeCd.Equals("I") ? i : b,
                 State = customer.State,
                 PostalCode = customer.PostalCode,
                 FedId = customer.FedId,
@@ -46,7 +48,7 @@ namespace Demo.Services
             {
                 Address = customer.Address,
                 City = customer.City,
-                CustTypeCd = customer.CustTypeCd.Equals("I") ? "Individual" : "Bussiness",
+                CustTypeCd = customer.CustTypeCd.Equals("I") ? i : b,
                 State = customer.State,
                 PostalCode = customer.PostalCode,
                 FedId = customer.FedId,
@@ -88,7 +90,7 @@ namespace Demo.Services
                     Name = individual.FirstName + " " + individual.LastName,
                     Address = customer.Address,
                     City = customer.City,
-                    CustTypeCd = customer.CustTypeCd.Equals("I") ? "Individual" : "Bussiness",
+                    CustTypeCd = customer.CustTypeCd.Equals("I") ? i : b,
                     BirthDate = individual.BirthDate,
                     State = customer.State,
                     PostalCode = customer.PostalCode,
@@ -112,7 +114,7 @@ namespace Demo.Services
                     Name = bussiness.Name,
                     Address = customer.Address,
                     City = customer.City,
-                    CustTypeCd = customer.CustTypeCd.Equals("I")?"Individual":"Bussiness",
+                    CustTypeCd = customer.CustTypeCd.Equals("I") ? i : b,
                     StateId = bussiness.StateId,
                     IncorpDate = bussiness.IncorpDate,
                     State = customer.State,
@@ -145,7 +147,7 @@ namespace Demo.Services
                     LastName = individual.LastName,
                     Address = customer.Address,
                     City = customer.City,
-                    CustTypeCd = customer.CustTypeCd.Equals("I") ? "Individual" : "Bussiness",
+                    CustTypeCd = customer.CustTypeCd.Equals("I") ? i : b,
                     BirthDate = individual.BirthDate,
                     State = customer.State,
                     PostalCode = customer.PostalCode,
@@ -159,7 +161,7 @@ namespace Demo.Services
                     Name = bussiness.Name,
                     Address = customer.Address,
                     City = customer.City,
-                    CustTypeCd = customer.CustTypeCd.Equals("I") ? "Individual" : "Bussiness",
+                    CustTypeCd = customer.CustTypeCd.Equals("I") ? i : b,
                     IncorpDate = bussiness.IncorpDate,
                     StateId = bussiness.StateId,
                     State = customer.State,
@@ -177,7 +179,7 @@ namespace Demo.Services
             {
                 Address = customer.Address,
                 City = customer.City,
-                CustTypeCd = customer.CustTypeCd.Equals("I") ? "Individual" : "Bussiness",
+                CustTypeCd = customer.CustTypeCd.Equals("I") ? i : b,
         };
             this._uow.CustomerRepository.Update(_customer, id);
             this._uow.SaveChanges();
