@@ -9,6 +9,7 @@ namespace Demo.Repositories
     {
         private readonly MyDbContext _context;
 
+
         public BussinessRepository(MyDbContext context)
         {
             this._context = context;
@@ -23,24 +24,35 @@ namespace Demo.Repositories
         public Bussiness GetBussinessByStateId(string id)
         {
             var bussiness = (from b in _context.Bussiness
-                             where b.StateId == id
+                             join c in _context.Customers on b.CustId equals c.CustId
+                             where b.StateId.Equals(id)
                              select b).FirstOrDefault();
             return bussiness;
         }
 
         public Bussiness FindById(string id)
         {
-            throw new System.NotImplementedException();
+            var bussiness = (from b in _context.Bussiness
+                             where b.StateId.Equals(id)
+                             select b).FirstOrDefault();
+            return bussiness;
         }
 
         public void Update(Bussiness entity, string id)
         {
-            throw new System.NotImplementedException();
+            var bussiness = (from b in _context.Bussiness
+                             where b.StateId.Equals(id)
+                             select b).FirstOrDefault();
+            bussiness.Name = entity.Name;
+            bussiness.IncorpDate = entity.IncorpDate;
         }
 
         public void Delete(string id)
         {
-            throw new System.NotImplementedException();
+            var customer = (from b in _context.Bussiness
+                            where b.StateId.Equals(id)
+                            select b).FirstOrDefault();
+            _context.Bussiness.Remove(customer);
         }
 
         public List<Bussiness> FetchAll()
@@ -50,11 +62,11 @@ namespace Demo.Repositories
 
         public Bussiness FindCusBussinessById(int id)
         {
-            var customer = (from c in _context.Customers
-                            join b in _context.Bussiness on c.CustId equals b.CustId
-                            where c.CustId == id
-                            select b).FirstOrDefault();
-            return customer;
+            var bussiness = (from c in _context.Customers
+                             join b in _context.Bussiness on c.CustId equals b.CustId
+                             where c.CustId == id
+                             select b).FirstOrDefault();
+            return bussiness;
         }
     }
 }

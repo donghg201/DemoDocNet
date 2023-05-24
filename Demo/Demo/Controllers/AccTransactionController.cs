@@ -1,7 +1,5 @@
 ﻿using Demo.Dto;
-using Demo.Models;
 using Demo.Services;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 
@@ -38,7 +36,7 @@ namespace Demo.Controllers
             {
                 if (id == 0)
                 {
-                    return BadRequest("Not found input!");
+                    return BadRequest("Not found id input!");
                 }
                 if (this._accTransactionService.GetAccTransactionById(id) == null)
                 {
@@ -63,15 +61,15 @@ namespace Demo.Controllers
                 }
                 if (_accTransactionService.GetBranchById((int)accTransaction.ExecutionBranchId) == null)
                 {
-                    return NotFound("Not found brand id!");
+                    return NotFound("Not found brand with id = " + accTransaction.ExecutionBranchId);
                 }
                 if (_accTransactionService.GetEmployeeById((int)accTransaction.TellerEmpId) == null)
                 {
-                    return NotFound("Not found employee id!");
+                    return NotFound("Not found employee with id = "+ accTransaction.TellerEmpId);
                 }
                 if (_accTransactionService.GetAccountById((int)accTransaction.AccountId) == null)
                 {
-                    return NotFound("Not found account id!");
+                    return NotFound("Not found account with id = " + accTransaction.AccountId);
                 }
                 if (!_accTransactionService.CompareAmountWithAvail(accTransaction.Amount, (int)accTransaction.AccountId))
                 {
@@ -97,21 +95,21 @@ namespace Demo.Controllers
                 }
                 if (this._accTransactionService.GetAccTransactionById(id) == null)
                 {
-                    return NotFound("Not found account transaction!");
+                    return NotFound("Not found account transaction with id = " + id);
                 }
                 else
                 {
                     if (_accTransactionService.GetBranchById((int)accTransaction.ExecutionBranchId) == null)
                     {
-                        return NotFound("Not found brand id!");
+                        return NotFound("Not found brand with id = " + accTransaction.ExecutionBranchId);
                     }
                     if (_accTransactionService.GetEmployeeById((int)accTransaction.TellerEmpId) == null)
                     {
-                        return NotFound("Not found employee id!");
+                        return NotFound("Not found employee with id = " + accTransaction.TellerEmpId);
                     }
                     if (_accTransactionService.GetAccountById((int)accTransaction.AccountId) == null)
                     {
-                        return NotFound("Not found account id!");
+                        return NotFound("Not found account with id = " + accTransaction.AccountId);
                     }
                     if (!_accTransactionService.CompareAmountWithAvail(accTransaction.Amount, (int)accTransaction.AccountId))
                     {
@@ -134,11 +132,11 @@ namespace Demo.Controllers
             {
                 if (id == 0)
                 {
-                    return BadRequest("Not found input!");
+                    return BadRequest("Not found id input!");
                 }
                 if (this._accTransactionService.GetAccTransactionById(id) == null)
                 {
-                    return NotFound("Not found account transaction!");
+                    return NotFound("Not found account transaction with id = " + id);
                 }
                 else
                 {

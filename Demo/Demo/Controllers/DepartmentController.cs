@@ -1,7 +1,5 @@
 ﻿using Demo.Dto;
-using Demo.Models;
 using Demo.Services;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 
@@ -59,7 +57,7 @@ namespace Demo.Controllers
             {
                 if (department == null)
                 {
-                    return BadRequest("Not found input!");
+                    return NotFound("Not found input!");
                 }
                 this._departmentService.AddDepartment(department);
                 return Ok(department);
@@ -77,11 +75,11 @@ namespace Demo.Controllers
             {
                 if (department == null || id == 0)
                 {
-                    return BadRequest("Not found input!");
+                    return NotFound("Not found input!");
                 }
                 if (this._departmentService.GetDepartmentById(id) == null)
                 {
-                    return NotFound("Not found department!");
+                    return NotFound("Not found department with id = " + id);
                 }
                 else
                 {
@@ -102,11 +100,11 @@ namespace Demo.Controllers
             {
                 if (id == 0)
                 {
-                    return BadRequest("Not found input!");
+                    return NotFound("Not found id input!");
                 }
                 if (this._departmentService.GetDepartmentById(id) == null)
                 {
-                    return NotFound("Not found department!");
+                    return NotFound("Not found department with id = " + id);
                 }
                 else
                 {

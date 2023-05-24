@@ -1,10 +1,6 @@
-﻿using Demo.Dto;
-using Demo.Models;
-using Demo.Services;
-using Microsoft.AspNetCore.Http;
+﻿using Demo.Services;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
 
 namespace Demo.Controllers
 {
@@ -26,7 +22,7 @@ namespace Demo.Controllers
             {
                 if(id == 0)
                 {
-                    return BadRequest("Not found input!");
+                    return BadRequest("Not found id input!");
                 }
                 var result = this._taskService.GetListCustomerAccount(id);
                 return Ok(result);

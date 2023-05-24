@@ -14,7 +14,7 @@ namespace Demo.Services
             this._uow = uow;
         }
 
-        public void AddEmployee(EmployeeDto employee)
+        public void AddEmployee(EmployeeAddDto employee)
         {
             Employee _employee = new()
             {
@@ -75,7 +75,6 @@ namespace Demo.Services
                 Department = new DepartmentDto()
                 {
                     
-                    DeptId = department.DeptId,
                     Name = department.Name,
                 }
             };
@@ -118,7 +117,6 @@ namespace Demo.Services
                     Department = new DepartmentDto()
                     {
 
-                        DeptId = department.DeptId,
                         Name = department.Name,
                     }
                 };

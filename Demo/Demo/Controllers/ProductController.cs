@@ -1,7 +1,5 @@
 ﻿using Demo.Dto;
-using Demo.Models;
 using Demo.Services;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 
@@ -38,7 +36,7 @@ namespace Demo.Controllers
             {
                 if (id == null)
                 {
-                    return BadRequest("Not found input!");
+                    return BadRequest("Not found id input!");
                 }
                 if (this._productService.GetProductById(id) == null)
                 {
@@ -59,15 +57,19 @@ namespace Demo.Controllers
             {
                 if (product == null)
                 {
-                    return BadRequest("Not found input!");
+                    return NotFound("Not found input!");
+                }
+                if(product.Name == null)
+                {
+                    return NotFound("Name can not be empty!");
                 }
                 if (this._productService.GetProductById(product.ProductCd) != null)
                 {
-                    return BadRequest("Exist product!");
+                    return BadRequest("Exist product with product cd = " + product.ProductCd);
                 }
                 if (this._productService.GetProductTypeById(product.ProductTypeCd) == null)
                 {
-                    return BadRequest("Not exist product type cd!");
+                    return BadRequest("Not found product type cd with cd = " + product.ProductTypeCd);
                 }
                 this._productService.AddProduct(product);
                 return Ok(product);
@@ -87,9 +89,13 @@ namespace Demo.Controllers
                 {
                     return BadRequest("Not found input!");
                 }
+                if (product.Name == null)
+                {
+                    return NotFound("Name can not be empty!");
+                }
                 if (this._productService.GetProductById(id) == null)
                 {
-                    return NotFound("Not found product!");
+                    return NotFound("Exist product with product cd = " + product.ProductCd);
                 }
                 else
                 {
@@ -110,11 +116,11 @@ namespace Demo.Controllers
             {
                 if (id == null)
                 {
-                    return BadRequest("Not found input!");
+                    return BadRequest("Not found id input!");
                 }
                 if (this._productService.GetProductById(id) == null)
                 {
-                    return NotFound("Not found product!");
+                    return NotFound("Not found product with id = " + id);
                 }
                 else
                 {

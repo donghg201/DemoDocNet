@@ -1,7 +1,6 @@
 ﻿using Demo.Dto;
 using Demo.Models;
 using Demo.Uow.IUow;
-using System;
 using System.Collections.Generic;
 
 namespace Demo.Services
@@ -17,13 +16,60 @@ namespace Demo.Services
             this._uow = uow;
         }
 
+        public void EditCustomerBussiness(CustomerDto customer,int id)
+        {
+            Customer _customer = new()
+            {
+                Address = customer.Address,
+                City = customer.City,
+                CustTypeCd = customer.CustTypeCd,
+                State = customer.State,
+                PostalCode = customer.PostalCode,
+                FedId = customer.FedId
+            };
+
+            //var bussiness = _uow.BusinessRepository.GetBussinessByStateId(customer.StateId);
+            Bussiness _bussiness = new()
+            {
+                Name = customer.Name,
+                IncorpDate = customer.IncorpDate
+            };
+
+            _uow.BusinessRepository.Update(_bussiness, customer.StateId);
+            _uow.CustomerRepository.Update(_customer, id);
+            _uow.SaveChanges();
+        }
+
+        public void EditCustomerIndividual(CustomerDto customer, int id)
+        {
+            Customer _customer = new()
+            {
+                Address = customer.Address,
+                City = customer.City,
+                CustTypeCd = customer.CustTypeCd,
+                State = customer.State,
+                PostalCode = customer.PostalCode,
+                FedId = customer.FedId
+            };
+
+            Individual _individual = new()
+            {
+                LastName = customer.LastName,
+                BirthDate = customer.BirthDate
+            };
+
+            _uow.IndividualRepository.Update(_individual, customer.FirstName);
+            _uow.CustomerRepository.Update(_customer, id);
+            _uow.SaveChanges();
+        }
+
         public void AddCustomerBusiness(CustomerDto customer)
         {
             Customer _customer = new()
             {
                 Address = customer.Address,
                 City = customer.City,
-                CustTypeCd = customer.CustTypeCd.Equals("I") ? i : b,
+                CustTypeCd = customer.CustTypeCd,
                 State = customer.State,
                 PostalCode = customer.PostalCode,
                 FedId = customer.FedId,
@@ -48,7 +94,7 @@ namespace Demo.Services
             {
                 Address = customer.Address,
                 City = customer.City,
-                CustTypeCd = customer.CustTypeCd.Equals("I") ? i : b,
+                CustTypeCd = customer.CustTypeCd,
                 State = customer.State,
                 PostalCode = customer.PostalCode,
                 FedId = customer.FedId,
@@ -125,9 +171,50 @@ namespace Demo.Services
             }
             return customerDtoList;
         }
-        public List<Customer> GetAllCustomer()
+        public List<CustomerDto> GetAllCustomer()
         {
-            return this._uow.CustomerRepository.FetchAll();
+            CustomerDto customerDto;
+            List<CustomerDto> customerDtoList = new();
+            List<Customer> customerList = this._uow.CustomerRepository.FetchAll();
+            foreach(var c in customerList)
+            {
+                if (c.CustTypeCd == "I")
+                {
+                    var customer = this._uow.CustomerRepository.FindById(c.CustId);
+                    var individual = this._uow.IndividualRepository.FindCusIndividualById(c.CustId);
+                    customerDto = new CustomerDto()
+                    {
+                        FirstName = individual.FirstName,
+                        LastName = individual.LastName,
+                        Address = customer.Address,
+                        City = customer.City,
+                        CustTypeCd = customer.CustTypeCd.Equals("I") ? i : b,
+                        BirthDate = individual.BirthDate,
+                        State = customer.State,
+                        PostalCode = customer.PostalCode,
+                        FedId = customer.FedId,
+                    };
+                }
+                else
+                {
+                    var customer = this._uow.CustomerRepository.FindById(c.CustId);
+                    var bussiness = this._uow.BusinessRepository.FindCusBussinessById(c.CustId);
+                    customerDto = new CustomerDto()
+                    {
+                        Name = bussiness.Name,
+                        Address = customer.Address,
+                        City = customer.City,
+                        CustTypeCd = customer.CustTypeCd.Equals("I") ? i : b,
+                        IncorpDate = bussiness.IncorpDate,
+                        StateId = bussiness.StateId,
+                        State = customer.State,
+                        PostalCode = customer.PostalCode,
+                        FedId = customer.FedId
+                    };
+                }
+                customerDtoList.Add(customerDto);
+            }
+            return customerDtoList;
         }
 
         public CustomerDto GetCustomerById(int id)
@@ -179,7 +266,7 @@ namespace Demo.Services
             {
                 Address = customer.Address,
                 City = customer.City,
-                CustTypeCd = customer.CustTypeCd.Equals("I") ? i : b,
+                CustTypeCd = customer.CustTypeCd,
         };
             this._uow.CustomerRepository.Update(_customer, id);
             this._uow.SaveChanges();

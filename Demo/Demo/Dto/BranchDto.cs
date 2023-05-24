@@ -1,8 +1,4 @@
-﻿using Demo.Models;
-using System;
-using System.ComponentModel.DataAnnotations;
-
-namespace Demo.Dto
+﻿namespace Demo.Dto
 {
     public class BranchDto
     {

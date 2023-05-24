@@ -1,6 +1,6 @@
 ﻿using Demo.Models;
-using Demo.Repositories.IRepositories;
 using Demo.Repositories;
+using Demo.Repositories.IRepositories;
 using Demo.Uow.IUow;
 
 namespace Demo.Uow

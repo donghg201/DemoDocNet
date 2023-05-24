@@ -1,10 +1,7 @@
 ﻿using Demo.Dto;
-using Demo.Models;
 using Demo.Services;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
 
 namespace Demo.Controllers
 {
@@ -38,7 +35,7 @@ namespace Demo.Controllers
             {
                 if (id == 0)
                 {
-                    return BadRequest("Not found input!");
+                    return NotFound("Not found id input!");
                 }
                 if (this._branchService.GetBranchById(id) == null)
                 {
@@ -59,7 +56,11 @@ namespace Demo.Controllers
             {
                 if (branch == null)
                 {
-                    return BadRequest("Not found input!");
+                    return NotFound("Not found input!");
+                }
+                if (branch.Name == "")
+                {
+                    return NotFound("Name of branch can not be empty!");
                 }
                 this._branchService.AddBranch(branch);
                 return Ok(branch);
@@ -77,11 +78,15 @@ namespace Demo.Controllers
             {
                 if (branch == null || id == 0)
                 {
-                    return BadRequest("Not found input!");
+                    return NotFound("Not found input!");
+                }
+                if (branch.Name == "")
+                {
+                    return NotFound("Name of branch can not be empty!");
                 }
                 if (this._branchService.GetBranchById(id) == null)
                 {
-                    return NotFound("Not found branch!");
+                    return NotFound("Not found branch with id = " + id);
                 }
                 else
                 {
@@ -103,7 +108,7 @@ namespace Demo.Controllers
             {
                 if (id == 0)
                 {
-                    return BadRequest("Not found input!");
+                    return NotFound("Not found input!");
                 }
                 if (this._branchService.GetBranchById(id) == null)
                 {

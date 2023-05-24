@@ -1,10 +1,7 @@
 ﻿using Demo.Dto;
-using Demo.Models;
 using Demo.Services;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Security.Principal;
 
 namespace Demo.Controllers
 {
@@ -39,7 +36,7 @@ namespace Demo.Controllers
             {
                 if (id == 0)
                 {
-                    return BadRequest("Not found input!");
+                    return BadRequest("Not found id input!");
                 }
                 if (this._accountService.GetAccountById(id) == null)
                 {
@@ -60,23 +57,27 @@ namespace Demo.Controllers
             {
                 if (account == null)
                 {
-                    return BadRequest("Not found input!");
+                    return NotFound("Not found input!");
                 }
-                if (_accountService.GetBranchById(account.OpenBranchId) == null)
+                if(account.OpenDate.Equals(null))
                 {
-                    return NotFound("Not found brand id!");
+                    return NotFound("Open Date can not be empty!");
                 }
-                if (_accountService.GetProductById(account.ProductCd) == null)
+                if (_accountService.GetBranchById(account.OpenBranchId) == null || account.OpenBranchId == 0)
                 {
-                    return NotFound("Not found product cd!");
+                    return NotFound("Not found brand with id = " + account.OpenBranchId);
                 }
-                if (_accountService.GetEmployeeById(account.OpenEmpId) == null)
+                if (_accountService.GetProductById(account.ProductCd) == null || account.ProductCd == null)
                 {
-                    return NotFound("Not found employee id!");
+                    return NotFound("Not found product with cd = " + account.ProductCd);
                 }
-                if (_accountService.GetCustomerById((int)account.CustId) == null)
+                if (_accountService.GetEmployeeById(account.OpenEmpId) == null || account.OpenEmpId == 0)
                 {
-                    return NotFound("Not found customer id!");
+                    return NotFound("Not found employee with id = " + account.OpenEmpId);
+                }
+                if (_accountService.GetCustomerById((int)account.CustId) == null || account.CustId == 0)
+                {
+                    return NotFound("Not found customer with id == " + account.CustId);
                 }
                 this._accountService.AddAccount(account);
                 return Ok(account);
@@ -93,29 +94,34 @@ namespace Demo.Controllers
             {
                 if (account == null || id == 0)
                 {
-                    return BadRequest("Not found input!");
+                    return NotFound("Not found input!");
                 }
+                
                 if (this._accountService.GetAccountById(id) == null)
                 {
-                    return NotFound("Not found account!");
+                    return NotFound("Not found customer with id == " + account.CustId);
                 }
                 else
                 {
-                    if (_accountService.GetBranchById(account.OpenBranchId) == null)
+                    if (account.OpenDate.Equals(null))
                     {
-                        return NotFound("Not found brand id!");
+                        return NotFound("Open Date can not be empty!");
                     }
-                    if (_accountService.GetProductById(account.ProductCd) == null)
+                    if (_accountService.GetBranchById(account.OpenBranchId) == null || account.OpenBranchId == 0)
                     {
-                        return NotFound("Not found product cd!");
+                        return NotFound("Not found brand with id = " + account.OpenBranchId);
                     }
-                    if (_accountService.GetEmployeeById(account.OpenEmpId) == null)
+                    if (_accountService.GetProductById(account.ProductCd) == null || account.ProductCd == null)
                     {
-                        return NotFound("Not found employee id!");
+                        return NotFound("Not found product with cd = " + account.ProductCd);
                     }
-                    if (_accountService.GetCustomerById((int)account.CustId) == null)
+                    if (_accountService.GetEmployeeById(account.OpenEmpId) == null || account.OpenEmpId == 0)
                     {
-                        return NotFound("Not found customer id!");
+                        return NotFound("Not found employee with id = " + account.OpenEmpId);
+                    }
+                    if (_accountService.GetCustomerById((int)account.CustId) == null || account.CustId == 0)
+                    {
+                        return NotFound("Not found customer with id == " + account.CustId);
                     }
                 }
                 this._accountService.UpdateAccount(account, id);
@@ -133,11 +139,11 @@ namespace Demo.Controllers
             {
                 if (id == 0)
                 {
-                    return BadRequest("Not found input!");
+                    return BadRequest("Not found id input!");
                 }
                 if (this._accountService.GetAccountById(id) == null)
                 {
-                    return NotFound("Not found branch!");
+                    return NotFound("Not found branch with id == "+ id);
                 }
                 else
                 {

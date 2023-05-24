@@ -1,5 +1,4 @@
-﻿using Demo.Models;
-using System;
+﻿using System;
 
 namespace Demo.Dto
 {

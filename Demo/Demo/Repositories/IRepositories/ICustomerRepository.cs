@@ -1,5 +1,4 @@
-﻿using Demo.Models;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace Demo.Repositories.IRepositories
 {

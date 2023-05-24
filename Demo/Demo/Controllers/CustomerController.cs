@@ -1,7 +1,5 @@
 ﻿using Demo.Dto;
-using Demo.Models;
 using Demo.Services;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -40,7 +38,7 @@ namespace Demo.Controllers
             {
                 if (id == 0)
                 {
-                    return BadRequest("Not found input!");
+                    return NotFound("Not found id input!");
                 }
                 if (this._customerService.GetCustomerById(id) == null)
                 {
@@ -61,7 +59,17 @@ namespace Demo.Controllers
             {
                 if (customer == null)
                 {
-                    return BadRequest("Not found input!");
+                    return NotFound("Not found input!");
+                }
+
+                if (customer.CustTypeCd == null)
+                {
+                    return NotFound("Not found Customer Type with cd = " + customer.CustTypeCd);
+                }
+
+                if (customer.FedId == null)
+                {
+                    return NotFound("Not found Fed Id with id = " + customer.FedId);
                 }
 
                 if (string.Equals(customer.CustTypeCd, "B") == true)
@@ -77,7 +85,6 @@ namespace Demo.Controllers
                         Address = customer.Address,
                         City = customer.City,
                         CustTypeCd = customer.CustTypeCd,
-                        StateId = customer.StateId,
                         IncorpDate = customer.IncorpDate,
                         Name = customer.Name,
                         State = customer.StateId,
@@ -107,7 +114,7 @@ namespace Demo.Controllers
                         FedId = customer.FedId,
                     });
                 }
-                return BadRequest("Not found CustTypeCd!");
+                return BadRequest("CustTypeCd is not exacting!");
 
             }
             catch (Exception e)
@@ -123,7 +130,7 @@ namespace Demo.Controllers
             {
                 if (name == "")
                 {
-                    return BadRequest("Not found input!");
+                    return NotFound("Not found name input!");
                 }
                 List<CustomerDto> customerBussiness = this._customerService.GetInfoCustomerBussiness(name);
                 List<CustomerDto> customerIndividual = this._customerService.GetInfoCustomerIndividual(name);
@@ -151,39 +158,58 @@ namespace Demo.Controllers
             {
                 if (customer == null || id == 0)
                 {
-                    return BadRequest("Not found input!");
+                    return NotFound("Not found input!");
+                }
+                if (customer.CustTypeCd == null)
+                {
+                    return NotFound("Not found Customer Type with cd = " + customer.CustTypeCd);
+                }
+                if (customer.FedId == null)
+                {
+                    return NotFound("Not found Fed Id with id = " + customer.FedId);
                 }
                 if (this._customerService.GetCustomerById(id) == null)
                 {
-                    return NotFound("Not found customer!");
+                    return NotFound("Not found customer with id = " + id);
                 }
                 else
                 {
-                    if (string.Equals(customer.CustTypeCd, "B") == true)
+                    var cusCheck = this._customerService.GetCustomerById(id);
+                    if (cusCheck.CustTypeCd.Equals("B"))
                     {
-                        if (this._customerService.GetBussinessByStateId(customer.StateId) != null)
+                        if (string.Equals(customer.CustTypeCd, "B") == true)
                         {
-                            return BadRequest("Exist state id!");
+                            if (this._customerService.GetBussinessByStateId(customer.StateId) == null)
+                            {
+                                return BadRequest("Not exist state id!");
+                            }
+                            this._customerService.EditCustomerBussiness(customer, id);
+                            return Ok(new CustomerDto()
+                            {
+                                Address = customer.Address,
+                                City = customer.City,
+                                CustTypeCd = customer.CustTypeCd,
+                                IncorpDate = customer.IncorpDate,
+                                Name = customer.Name,
+                                State = customer.StateId,
+                                PostalCode = customer.PostalCode,
+                                FedId = customer.FedId,
+                            });
                         }
-                        this._customerService.AddCustomerBusiness(customer);
-                        return Ok(new CustomerDto()
+                        else
                         {
-                            Address = customer.Address,
-                            City = customer.City,
-                            CustTypeCd = customer.CustTypeCd,
-                            StateId = customer.StateId,
-                            IncorpDate = customer.IncorpDate,
-                            Name = customer.Name
-                        });
+                            return BadRequest("CusTypeId not match");
+                        }
                     }
+
 
                     if (string.Equals(customer.CustTypeCd, "I") == true)
                     {
-                        if (this._customerService.GetIndividualByFirstName(customer.FirstName) != null)
+                        if (this._customerService.GetIndividualByFirstName(customer.FirstName) == null)
                         {
-                            return BadRequest("Exist first name!");
+                            return BadRequest("Not exist first name!");
                         }
-                        this._customerService.AddCustomerIndividual(customer);
+                        this._customerService.EditCustomerIndividual(customer, id);
                         return Ok(new CustomerDto()
                         {
                             Address = customer.Address,
@@ -192,7 +218,14 @@ namespace Demo.Controllers
                             BirthDate = customer.BirthDate,
                             FirstName = customer.FirstName,
                             LastName = customer.LastName,
+                            State = customer.StateId,
+                            PostalCode = customer.PostalCode,
+                            FedId = customer.FedId,
                         });
+                    }
+                    else
+                    {
+                        return BadRequest("CusTypeId not match");
                     }
                 }
                 this._customerService.UpdateCustomer(customer, id);
@@ -212,11 +245,11 @@ namespace Demo.Controllers
             {
                 if (id == 0)
                 {
-                    return BadRequest("Not found input!");
+                    return NotFound("Not found id input!");
                 }
                 if (this._customerService.GetCustomerById(id) == null)
                 {
-                    return NotFound("Not found customer!");
+                    return NotFound("Not found customer with id = " + id);
                 }
                 else
                 {

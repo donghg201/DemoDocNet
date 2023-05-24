@@ -1,7 +1,5 @@
 ﻿using Demo.Dto;
-using Demo.Models;
 using Demo.Services;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 
@@ -38,7 +36,7 @@ namespace Demo.Controllers
             {
                 if (id == 0)
                 {
-                    return BadRequest("Not found input!");
+                    return BadRequest("Not found id input!");
                 }
                 if (this._employeeService.GetEmployeeById(id) == null)
                 {
@@ -53,25 +51,37 @@ namespace Demo.Controllers
         }
 
         [HttpPost]
-        public IActionResult Add([FromBody] EmployeeDto employee)
+        public IActionResult Add([FromBody] EmployeeAddDto employee)
         {
             try
             {
                 if (employee == null)
                 {
-                    return BadRequest("Not found input!");
+                    return NotFound("Not found input!");
+                }
+                if (employee.FirstName == "" || employee.FirstName == null)
+                {
+                    return NotFound("First name can not be empty");
+                }
+                if (employee.LastName == "" || employee.LastName == null)
+                {
+                    return NotFound("Last name can not be empty!");
+                }
+                if (employee.StartDate.Equals(null))
+                {
+                    return NotFound("Not found Start date!");
                 }
                 if (_employeeService.GetBranchById((int)employee.AssignedBranchId) == null)
                 {
-                    return NotFound("Not found brand id!");
+                    return NotFound("Not found brand with id = " + employee.AssignedBranchId);
                 }
                 if (_employeeService.GetDepartmentById((int)employee.DeptId) == null)
                 {
-                    return NotFound("Not found department id!");
+                    return NotFound("Not found department with id = " + employee.DeptId);
                 }
                 if (_employeeService.GetEmployeeBySupId((int)employee.SuperiorEmpId) != null)
                 {
-                    return NotFound("Exist superior employee id!");
+                    return NotFound("Exist superior employee with id = " + employee.SuperiorEmpId);
                 }
                 this._employeeService.AddEmployee(employee);
                 return Ok(employee);
@@ -91,23 +101,35 @@ namespace Demo.Controllers
                 {
                     return BadRequest("Not found input!");
                 }
+                if (employee.FirstName == "" || employee.FirstName == null)
+                {
+                    return NotFound("First name can not be empty");
+                }
+                if (employee.LastName == "" || employee.LastName == null)
+                {
+                    return NotFound("Last name can not be empty!");
+                }
+                if (employee.StartDate.Equals(null))
+                {
+                    return NotFound("Not found Start date!");
+                }
                 if (this._employeeService.GetEmployeeById(id) == null)
                 {
-                    return NotFound("Not found employee!");
+                    return NotFound("Not found employee with id = " + id);
                 }
                 else
                 {
                     if (_employeeService.GetBranchById((int)employee.AssignedBranchId) == null)
                     {
-                        return NotFound("Not found brand id!");
+                        return NotFound("Not found brand with id = " + employee.AssignedBranchId);
                     }
                     if (_employeeService.GetDepartmentById((int)employee.DeptId) == null)
                     {
-                        return NotFound("Not found department id!");
+                        return NotFound("Not found department with id = " + employee.DeptId);
                     }
-                    if (_employeeService.GetEmployeeBySupId((int)employee.SuperiorEmpId) != null)
+                    if (_employeeService.GetEmployeeBySupId((int)employee.SuperiorEmpId) == null)
                     {
-                        return NotFound("Exist superior employee id!");
+                        return NotFound("Superior employee with id = " + employee.SuperiorEmpId + " not match!");
                     }
                 }
                 this._employeeService.UpdateEmployee(employee, id);
@@ -126,11 +148,11 @@ namespace Demo.Controllers
             {
                 if (id == 0)
                 {
-                    return BadRequest("Not found input!");
+                    return BadRequest("Not found id input!");
                 }
                 if (this._employeeService.GetEmployeeById(id) == null)
                 {
-                    return NotFound("Not found employee!");
+                    return NotFound("Not found employee with id = " + id);
                 }
                 else
                 {

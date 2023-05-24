@@ -1,7 +1,5 @@
 ﻿using Demo.Dto;
-using Demo.Models;
 using Demo.Services;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 
@@ -38,7 +36,7 @@ namespace Demo.Controllers
             {
                 if (id == null)
                 {
-                    return BadRequest("Not found input!");
+                    return BadRequest("Not found id input!");
                 }
 
                 if (this._productTypeService.GetProductTypeById(id) == null)
@@ -86,7 +84,7 @@ namespace Demo.Controllers
                 }
                 if (this._productTypeService.GetProductTypeById(id) == null)
                 {
-                    return NotFound("Not found productType!");
+                    return NotFound("Not found productType with id = " + id);
                 }
                 else
                 {
@@ -107,11 +105,11 @@ namespace Demo.Controllers
             {
                 if (id == null)
                 {
-                    return BadRequest("Not found input!");
+                    return BadRequest("Not found id input!");
                 }
                 if (this._productTypeService.GetProductTypeById(id) == null)
                 {
-                    return NotFound("Not found productType!");
+                    return NotFound("Not found productType with id = " + id);
                 }
                 else
                 {

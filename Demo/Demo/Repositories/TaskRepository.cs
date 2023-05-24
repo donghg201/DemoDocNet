@@ -89,7 +89,7 @@ namespace Demo.Repositories
                                join b in _context.Branchs on t.ExecutionBranchId equals b.BranchId
                                join a in _context.Accounts on t.AccountId equals a.AccountId
                                join c in _context.Customers on a.CustId equals c.CustId
-                               where (c.CustId == id && t.
+                               where c.CustId == id
                                select new AccTransactionTaskDto()
                                {
                                    TxnId = t.TxnId,

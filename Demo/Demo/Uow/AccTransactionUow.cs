@@ -2,7 +2,6 @@
 using Demo.Repositories;
 using Demo.Repositories.IRepositories;
 using Demo.Uow.IUow;
-using Microsoft.EntityFrameworkCore;
 
 namespace Demo.Uow
 {

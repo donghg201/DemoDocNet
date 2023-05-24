@@ -1,6 +1,4 @@
-﻿using Demo.Models;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
 
 namespace Demo.Dto
 {

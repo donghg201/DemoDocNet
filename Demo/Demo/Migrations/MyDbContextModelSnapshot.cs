@@ -377,7 +377,7 @@ namespace Demo.Migrations
                         .IsRequired();
 
                     b.HasOne("Demo.Models.Product", "Product")
-                        .WithMany("Accounts")
+                        .WithMany()
                         .HasForeignKey("ProductCd")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -451,11 +451,6 @@ namespace Demo.Migrations
                     b.Navigation("Bussiness");
 
                     b.Navigation("Individuals");
-                });
-
-            modelBuilder.Entity("Demo.Models.Product", b =>
-                {
-                    b.Navigation("Accounts");
                 });
 #pragma warning restore 612, 618
         }

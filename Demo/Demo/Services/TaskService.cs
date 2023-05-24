@@ -1,7 +1,5 @@
 ﻿using Demo.Dto;
-using Demo.Repositories;
 using Demo.Uow.IUow;
-using System.Collections.Generic;
 
 namespace Demo.Services
 {

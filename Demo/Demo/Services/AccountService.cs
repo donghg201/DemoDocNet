@@ -2,8 +2,6 @@
 using Demo.Models;
 using Demo.Uow.IUow;
 using System.Collections.Generic;
-using System.Net;
-using System.Security.Principal;
 
 namespace Demo.Services
 {

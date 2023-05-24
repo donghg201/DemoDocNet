@@ -1,7 +1,5 @@
-﻿using Demo.Dto;
-using Demo.Models;
+﻿using Demo.Models;
 using Demo.Repositories.IRepositories;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
