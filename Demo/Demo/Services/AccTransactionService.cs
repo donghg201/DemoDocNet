@@ -1,6 +1,7 @@
 ﻿using Demo.Dto;
 using Demo.Models;
 using Demo.Uow.IUow;
+using System;
 using System.Collections.Generic;
 
 namespace Demo.Services
@@ -27,7 +28,7 @@ namespace Demo.Services
                 TellerEmpId = accTransaction.TellerEmpId,
             };
             var account = this._uow.AccountRepository.FindById((int)accTransaction.AccountId);
-            account.AvailBalance = account.AvailBalance - accTransaction.Amount;
+            account.AvailBalance -= accTransaction.Amount;
             
             this._uow.AccTransactionRepository.Add(_accTransaction);
             this._uow.SaveChanges();
@@ -142,19 +143,41 @@ namespace Demo.Services
 
         public void UpdateAccTransaction(AccTransactionDto accTransaction, int id)
         {
-
-            AccTransaction _accTransaction = new()
+            var accOld = _uow.AccTransactionRepository.FindById(id);
+            if(accOld.Amount >= accTransaction.Amount)
             {
-                Amount = accTransaction.Amount,
-                FundsAvailDate = accTransaction.FundsAvailDate,
-                TxnDate = accTransaction.TxnDate,
-                TxnTypeCd = accTransaction.TxnTypeCd,
-                AccountId = accTransaction.AccountId,
-                ExecutionBranchId = accTransaction.ExecutionBranchId,
-                TellerEmpId = accTransaction.TellerEmpId,
-            };
-            this._uow.AccTransactionRepository.Update(_accTransaction, id);
-            this._uow.SaveChanges();
+                var account = this._uow.AccountRepository.FindById((int)accTransaction.AccountId);
+                account.AvailBalance = account.AvailBalance + Math.Abs(accOld.Amount - accTransaction.Amount);
+                AccTransaction _accTransaction = new()
+                {
+                    Amount = accTransaction.Amount,
+                    FundsAvailDate = accTransaction.FundsAvailDate,
+                    TxnDate = accTransaction.TxnDate,
+                    TxnTypeCd = accTransaction.TxnTypeCd,
+                    AccountId = accTransaction.AccountId,
+                    ExecutionBranchId = accTransaction.ExecutionBranchId,
+                    TellerEmpId = accTransaction.TellerEmpId,
+                };
+                this._uow.AccTransactionRepository.Update(_accTransaction, id);
+                this._uow.SaveChanges();
+            }
+            else
+            {
+                var account = this._uow.AccountRepository.FindById((int)accTransaction.AccountId);
+                account.AvailBalance = account.AvailBalance - Math.Abs(accOld.Amount - accTransaction.Amount);
+                AccTransaction _accTransaction = new()
+                {
+                    Amount = accTransaction.Amount,
+                    FundsAvailDate = accTransaction.FundsAvailDate,
+                    TxnDate = accTransaction.TxnDate,
+                    TxnTypeCd = accTransaction.TxnTypeCd,
+                    AccountId = accTransaction.AccountId,
+                    ExecutionBranchId = accTransaction.ExecutionBranchId,
+                    TellerEmpId = accTransaction.TellerEmpId,
+                };
+                this._uow.AccTransactionRepository.Update(_accTransaction, id);
+                this._uow.SaveChanges();
+            }
         }
 
         public void RemoveAccTransaction(int id)
